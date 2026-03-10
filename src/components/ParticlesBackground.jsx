@@ -35,7 +35,7 @@ export default function ParticlesBackground() {
       <PointMaterial
         transparent
         color="#ffffff"
-        size={2.5}
+        size={2.6}
         sizeAttenuation={true}
         depthWrite={false}
       />
