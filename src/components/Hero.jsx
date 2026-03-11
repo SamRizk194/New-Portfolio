@@ -4,19 +4,17 @@ const Hero = () => {
   return (
     <section className="relative w-full h-screen overflow-x-hidden">
       <div className="max-w-[600px] flex flex-col gap-6 md:ml-48 md:mt-40">
-        {/* MAIN TITLE */}
         <h1 className="text-[4.5rem] md:text-[5rem] leading-[0.9]">
           <span className="flex text-[#00E609] font-anton mb-1 ">FRONTEND</span>
           <span className="flex ml-4 text-white font-anton">DEVELOPER</span>
         </h1>
-        {/* DESCRIPTION  */}
+
         <p className="text-left text-gray-300 text-lg md:text-lg text-gray-300">
           Hi! I'm <span className="font-semibold text-white">sameh</span>. A
           creative Frontend Developer with 2+ years of experience building
           high‑performance, scalable, and responsive web solutions.
         </p>
 
-        {/* RECTANGULAR BUTTON  */}
         <a
           href="#about-me"
           class="group relative w-max px-8 py-3 tracking-widest text-lg font-anton

@@ -8,11 +8,20 @@
   font-family: var(--font-anton);
 }
 
+body,
+html,
+#root,
+a,
+button,
+input,
+textarea {
+  cursor: none !important;
+}
+
 body {
   height: 1000vh;
   background-color: black;
 }
-
 .arrow-container {
   position: absolute;
   bottom: 0;
@@ -21,15 +30,12 @@ body {
   height: 250px;
   overflow: hidden;
   animation: dropArrow 6s linear infinite;
-  opacity: 1;
 }
 
 .arrow-line {
   stroke: rgb(132, 128, 128);
   stroke-width: 0.5;
   fill: transparent;
-  stroke-dasharray: 480;
-  stroke-dashoffset: 480;
   animation: drawArrow 6s ease-out infinite, fillArrow 6s ease-in infinite;
 }
 
