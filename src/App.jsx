@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 import { Canvas } from "@react-three/fiber";
-import ParticlesBackground from "./components/ParticlesBackground";
+import ParticlesBackground from "./components/animation/ParticlesBackground";
 import Hero from "./components/Hero";
-import Intro from "./components/Intro";
+import Intro from "./components/animation/Intro";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
