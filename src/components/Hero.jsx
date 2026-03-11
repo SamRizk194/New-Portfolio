@@ -7,14 +7,14 @@ const Hero = () => {
           <span className="flex text-[#00E609] font-anton mb-1 ">FRONTEND</span>
           <span className="flex ml-4 text-white font-anton">DEVELOPER</span>
         </h1>
-        {/* DESCRIPTION */}
+        {/* DESCRIPTION  */}
         <p className="text-left text-gray-300 text-lg md:text-lg text-gray-300">
           Hi! I'm <span className="font-semibold text-white">sameh</span>. A
           creative Frontend Developer with 2+ years of experience building
           high‑performance, scalable, and responsive web solutions.
         </p>
 
-        {/* RECTANGULAR BUTTON */}
+        {/* RECTANGULAR BUTTON  */}
         <a
           href="#about-me"
           class="group relative w-max px-8 py-3 tracking-widest text-lg font-anton
@@ -28,6 +28,27 @@ const Hero = () => {
            rounded-t-[50%] z-0"
           ></span>
         </a>
+      </div>
+
+      <div>
+        <div className="arrow-container">
+          <svg
+            width="376"
+            height="111"
+            viewBox="0 0 376 111"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 1V39.9286L188 110V70.6822L1 1Z"
+              className="arrow-line"
+            />
+
+            <path
+              d="M375 1V39.9286L188 110V70.6822L375 1Z"
+              className="arrow-line"
+            />
+          </svg>
+        </div>
       </div>
     </section>
   );
