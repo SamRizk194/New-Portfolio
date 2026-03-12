@@ -5,6 +5,7 @@ import ParticlesBackground from "./components/animation/ParticlesBackground";
 import Hero from "./components/Hero";
 import Intro from "./components/animation/Intro";
 import CustomCursor from "./components/animation/CustomCursor";
+import AboutMe from "./components/AboutMe";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <>
       <CustomCursor />
+
       <Canvas
         style={{
           position: "fixed",
@@ -39,18 +41,12 @@ export default function App() {
           zIndex: 0,
         }}
       />
-
-      <div
-        style={{
-          position: "relative",
-          zIndex: 1,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh",
-        }}
-      >
+      <div className="relative z-10 ">
         <Hero />
+      </div>
+
+      <div className="relative z-10">
+        <AboutMe />
       </div>
 
       {showIntro && <Intro onFinish={() => setShowIntro(false)} />}

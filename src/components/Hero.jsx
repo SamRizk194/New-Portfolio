@@ -2,14 +2,14 @@ import Arrow from "./animation/Arrow";
 
 const Hero = () => {
   return (
-    <section className="relative w-full h-screen overflow-x-hidden">
-      <div className="max-w-[600px] flex flex-col gap-6 md:ml-48 md:mt-40">
+    <section className="relative w-full h-[105vh]  sm:h-[100vh] md:h-[130vh] lg:h-[96vh] xl:h-[98vh] overflow-x-hidden ">
+      <div className="max-w-[600px] flex flex-col gap-6 mt-30 ml-4  xl:ml-52 xl:mt-50">
         <h1 className="text-[4.5rem] md:text-[5rem] leading-[0.9]">
           <span className="flex text-[#00E609] font-anton mb-1 ">FRONTEND</span>
-          <span className="flex ml-4 text-white font-anton">DEVELOPER</span>
+          <span className="flex ml-4 text-gray-200 font-anton">DEVELOPER</span>
         </h1>
 
-        <p className="text-left text-gray-300 text-lg md:text-lg text-gray-300">
+        <p className="my-3 text-left text-lg md:text-lg text-gray-300">
           Hi! I'm <span className="font-semibold text-white">sameh</span>. A
           creative Frontend Developer with 2+ years of experience building
           high‑performance, scalable, and responsive web solutions.
