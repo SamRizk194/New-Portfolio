@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import Intro from "./components/animation/Intro";
 import CustomCursor from "./components/animation/CustomCursor";
 import AboutMe from "./components/AboutMe";
+import Skills from "./components/Skills";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -43,10 +44,8 @@ export default function App() {
       />
       <div className="relative z-10 ">
         <Hero />
-      </div>
-
-      <div className="relative z-10">
         <AboutMe />
+        <Skills />
       </div>
 
       {showIntro && <Intro onFinish={() => setShowIntro(false)} />}

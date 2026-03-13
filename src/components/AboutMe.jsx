@@ -52,7 +52,7 @@ const AboutMe = () => {
 
   return (
     <section
-      className="container pl-section text-gray-200 lg:px-50 md:px-50"
+      className="container lg:px-50 md:px-50 text-gray-200 "
       id="about-me"
     >
       <div className="container px-5 md:px-0 lg:px-0 " ref={container}>
@@ -63,7 +63,7 @@ const AboutMe = () => {
             users.
           </h2>
 
-          <p className="pb-3 border-b text-muted-foreground slide-up-and-fade text-gray-300">
+          <p className="pb-3 border-b slide-up-and-fade text-gray-300">
             This is me.
           </p>
 
@@ -72,7 +72,7 @@ const AboutMe = () => {
               <p className="text-5xl slide-up-and-fade">Hi, I&apos;m Sameh.</p>
             </div>
             <div className="md:col-span-7">
-              <div className="text-lg text-muted-foreground max-w-[450px]">
+              <div className="text-lg max-w-[450px]">
                 <p className="slide-up-and-fade text-gray-300">
                   I&apos;m a frontend web developer dedicated to turning ideas
                   into creative solutions. I specialize in creating seamless and
