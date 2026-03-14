@@ -7,6 +7,7 @@ import Intro from "./components/animation/Intro";
 import CustomCursor from "./components/animation/CustomCursor";
 import AboutMe from "./components/AboutMe";
 import Skills from "./components/Skills";
+import MyProjects from "./components/MyProjects";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -46,6 +47,7 @@ export default function App() {
         <Hero />
         <AboutMe />
         <Skills />
+        <MyProjects />
       </div>
 
       {showIntro && <Intro onFinish={() => setShowIntro(false)} />}

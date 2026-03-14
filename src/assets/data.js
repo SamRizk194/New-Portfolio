@@ -43,3 +43,30 @@ export const MY_STACK = {
     { name: "React Lottie", icon: lottieIcon },
   ],
 };
+
+export const PROJECTS = [
+  {
+    slug: "project-1",
+    title: "Project One",
+    thumbnail: "#",
+    year: "2023",
+    techStack: ["React", "GSAP", "CSS"],
+    description: "<p>This is a demo description of Project One.</p>",
+    role: "<p>Developer</p>",
+    images: ["#", "#"],
+    sourceCode: "#",
+    liveUrl: "#",
+  },
+  {
+    slug: "project-2",
+    title: "Project Two",
+    thumbnail: "#",
+    year: "2022",
+    techStack: ["HTML", "CSS", "JS"],
+    description: "<p>This is a demo description of Project Two.</p>",
+    role: "<p>Designer</p>",
+    images: ["#", "#"],
+    sourceCode: "#",
+    liveUrl: "#",
+  },
+];
