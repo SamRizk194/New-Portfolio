@@ -22,7 +22,7 @@ const Hero = () => {
       animate={controls}
       className="relative w-full h-[105vh] sm:h-[90vh] pt-0.5 pl-0 sm:pt-0 lg:pt-11 lg:pl-0 xl:pl-48"
     >
-      <div className="max-w-[600px] flex flex-col gap-6 mt-30 ml-4 xl:mt-50">
+      <div className="max-w-[600px] flex flex-col gap-6 mt-30 ml-4 max-md:mt-[600px] xl:mt-50">
         <h1 className="text-[4.5rem] md:text-[5rem] leading-[0.9]">
           <span className="flex primary font-anton mb-1 ">FRONTEND</span>
           <span className="flex ml-4 foreground font-anton">DEVELOPER</span>

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, PerspectiveCamera } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
@@ -6,17 +6,40 @@ import { useInView } from "react-intersection-observer";
 import * as THREE from "three";
 import { MY_STACK } from "../../assets/data";
 
+// Hook لتحديد حجم الجهاز
+function useDeviceScale() {
+  const [scaleFactor, setScaleFactor] = useState(1);
+
+  useEffect(() => {
+    const updateScale = () => {
+      const width = window.innerWidth;
+      if (width < 768) {
+        setScaleFactor(0.7); // موبايل
+      } else {
+        setScaleFactor(1); // كمبيوتر
+      }
+    };
+
+    updateScale();
+    window.addEventListener("resize", updateScale);
+    return () => window.removeEventListener("resize", updateScale);
+  }, []);
+
+  return scaleFactor;
+}
+
 function GlobeWithHtmlIcons({ triggerAnimation }) {
   const groupRef = useRef();
-  const radius = 4.5;
+  const baseRadius = 4.5;
   const [visibility, setVisibility] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
-  // التحكم بالسحب
+  const deviceScale = useDeviceScale();
+  const radius = baseRadius * deviceScale;
+
   const [dragging, setDragging] = useState(false);
   const lastPointer = useRef([0, 0]);
 
-  // ✅ توحيد الإحداثيات (ماوس + لمس)
   const getPointerPosition = (e) => {
     if (e.touches && e.touches.length > 0) {
       return [e.touches[0].clientX, e.touches[0].clientY];
@@ -32,7 +55,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
 
   const handlePointerMove = (e) => {
     if (!dragging) return;
-
     const [x, y] = getPointerPosition(e);
     const [lastX, lastY] = lastPointer.current;
 
@@ -43,7 +65,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
       new THREE.Vector3(1, 0, 0),
       deltaY
     );
-
     const qY = new THREE.Quaternion().setFromAxisAngle(
       new THREE.Vector3(0, 1, 0),
       deltaX
@@ -63,7 +84,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
 
   const handlePointerUp = () => setDragging(false);
 
-  // دوران تلقائي
   useFrame(() => {
     if (!groupRef.current) return;
 
@@ -72,7 +92,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
       Math.random(),
       Math.random()
     ).normalize();
-
     const angle = 0.002;
     const q = new THREE.Quaternion().setFromAxisAngle(axis, angle);
 
@@ -80,17 +99,14 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
       groupRef.current.quaternion.multiply(q);
     }
 
-    // تحديث رؤية الأيقونات
     const camera = groupRef.current.parent?.children.find(
       (obj) => obj.type === "PerspectiveCamera"
     );
-
     if (!camera) return;
 
     const cameraDir = new THREE.Vector3()
       .subVectors(camera.position, groupRef.current.position)
       .normalize();
-
     const newVisibility = [];
 
     MY_STACK.skills.forEach((_, i) => {
@@ -108,7 +124,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
       const iconDir = new THREE.Vector3()
         .subVectors(worldPos, groupRef.current.position)
         .normalize();
-
       let dot = iconDir.dot(cameraDir);
       dot = THREE.MathUtils.clamp(dot, 0, 1);
 
@@ -126,11 +141,10 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
       onPointerCancel={handlePointerUp}
-      onTouchStart={handlePointerDown} // ✅ دعم الموبايل
-      onTouchMove={handlePointerMove} // ✅ دعم الموبايل
-      onTouchEnd={handlePointerUp} // ✅ دعم الموبايل
+      onTouchStart={handlePointerDown}
+      onTouchMove={handlePointerMove}
+      onTouchEnd={handlePointerUp}
     >
-      {/* الكرة */}
       <mesh>
         <sphereGeometry args={[radius, 40, 35]} />
         <meshBasicMaterial
@@ -141,7 +155,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
         />
       </mesh>
 
-      {/* الأيقونات */}
       {MY_STACK.skills.map((item, i) => {
         const phi = Math.acos(-1 + (2 * i) / MY_STACK.skills.length);
         const theta = Math.PI * (1 + Math.sqrt(5)) * i;
@@ -153,7 +166,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
         const getRandomStart = () => {
           const dirs = ["top", "bottom", "left", "right", "front", "back"];
           const choice = dirs[Math.floor(Math.random() * dirs.length)];
-
           switch (choice) {
             case "top":
               return [Math.random() * 20 - 10, 15, Math.random() * 20 - 10];
@@ -182,7 +194,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
         });
 
         const brightness = visibility[i] ?? 0;
-        const scale = 0.7 + 0.8 * brightness;
+        const scale = deviceScale * (0.7 + 0.8 * brightness);
         const opacity = 0.3 + 0.7 * brightness;
 
         return (
@@ -246,12 +258,16 @@ export default function FreeMovementSphere() {
   });
 
   return (
-    <div className="py-30" ref={ref}>
+    <div
+      className="flex justify-center items-center py-30"
+      ref={ref}
+      style={{ minHeight: "500px" }}
+    >
       <Canvas
         style={{
           width: "100%",
           height: "500px",
-          touchAction: "none", // ✅ مهم جدًا للموبايل
+          touchAction: "none",
         }}
       >
         <PerspectiveCamera makeDefault position={[0, 0, 12]} />

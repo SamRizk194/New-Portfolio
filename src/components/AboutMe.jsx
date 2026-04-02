@@ -74,7 +74,7 @@ const AboutMe = () => {
               I&apos;m Sameh.
             </p>
           </div>
-          <div className="md:col-span-7 font-sans0">
+          <div className="md:col-span-7 font-sans">
             <div className="text-lg max-w-[450px]">
               <p className="slide-up-and-fade muted-foreground">
                 I&apos;m a frontend web developer dedicated to turning ideas
