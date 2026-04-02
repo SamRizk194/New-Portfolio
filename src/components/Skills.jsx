@@ -3,7 +3,7 @@ import IconsSphere from "./animation/IconsSphere.jsx";
 
 const Skills = () => {
   return (
-    <div className="mt-40 mb-10 foreground px-3 lg:px-4 xl:px-52">
+    <div className="mt-10 mb-0 sm:mt-40 sm:mb-10 foreground px-3 lg:px-4 xl:px-52">
       <h2 className="text-xl leading-none flex items-center gap-2.5 mb-6">
         <Flower size={30} />
         FRONTEND
