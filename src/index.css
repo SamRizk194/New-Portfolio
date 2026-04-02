@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+:root {
+  --font-anton: "Anton", sans-serif;
+  --font-belanosima: "belanosima", sans-serif;
+}
+
+* {
+  user-select: none;
+}
+
+.font-anton {
+  font-family: var(--font-anton);
+}
+.font-belanosima {
+  font-family: var(--font-belanosima);
+}
+
+.primary {
+  color: #00e65c;
+}
+
+.foreground {
+  color: #dedede;
+}
+
+.muted-foreground {
+  color: #b5b5b5;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
+body {
+  -ms-overflow-style: none;
+}
+
+body,
+html,
+#root,
+a,
+button,
+input,
+textarea {
+  cursor: none !important;
+}
+
+.arrow-container {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 250px;
+  overflow: hidden;
+  animation: dropArrow 6s linear infinite;
+}
+
+.arrow-line {
+  stroke: rgb(132, 128, 128);
+  stroke-width: 0.5;
+  fill: transparent;
+  animation: drawArrow 6s ease-out infinite, fillArrow 6s ease-in infinite;
+}
+
+@keyframes drawArrow {
+  0% {
+    stroke-dashoffset: 480;
+  }
+  35% {
+    stroke-dashoffset: 0;
+  }
+  60% {
+    stroke-dashoffset: 0;
+  }
+  85% {
+    stroke-dashoffset: 0;
+  }
+  86%,
+  100% {
+    stroke-dashoffset: 480;
+  }
+}
+
+@keyframes fillArrow {
+  0%,
+  35% {
+    fill: transparent;
+  }
+  36%,
+  85% {
+    fill: rgba(40, 38, 38, 0.8);
+  }
+  86%,
+  100% {
+    fill: transparent;
+  }
+}
+
+@keyframes dropArrow {
+  0%,
+  60% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  61%,
+  85% {
+    transform: translateX(-50%) translateY(250px);
+    opacity: 1;
+  }
+  86%,
+  100% {
+    transform: translateX(-50%) translateY(250px);
+    opacity: 0;
+  }
+}
