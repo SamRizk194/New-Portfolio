@@ -259,7 +259,7 @@ export default function FreeMovementSphere() {
 
   return (
     <div
-      className="flex justify-center items-center py-30"
+      className="flex justify-center items-center py-5"
       ref={ref}
       style={{ minHeight: "500px" }}
     >
