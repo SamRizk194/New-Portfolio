@@ -1,18 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { MoveUpRight } from "lucide-react";
-
-const MENU = [
-  { name: "Home", url: "#" },
-  { name: "About Me", url: "#about-me" },
-  { name: "Experience", url: "#my-experience" },
-  { name: "Projects", url: "#selected-projects" },
-];
-
-const SOCIAL = [
-  { name: "Facebook", url: "#" },
-  { name: "Twitter", url: "#" },
-  { name: "GitHub", url: "#" },
-];
 
 const COLORS = [
   "bg-yellow-500 text-black",
@@ -21,54 +8,72 @@ const COLORS = [
   "bg-indigo-500 text-white",
 ];
 
+const MENU_LINKS = [
+  { name: "Home", url: "#" },
+  { name: "About Me", url: "#about-me" },
+  { name: "Experience", url: "#my-experience" },
+  { name: "Projects", url: "#selected-projects" },
+];
+
+const SOCIAL_LINKS = [
+  { name: "Facebook", url: "#" },
+  { name: "Twitter", url: "#" },
+  { name: "GitHub", url: "#" },
+];
+
+const GENERAL_INFO = { email: "test@mail.com" };
+
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // منع الاسكرول عند فتح المينيو
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+  }, [isMenuOpen]);
 
   const handleNavigate = (url) => {
-    if (url !== "#") {
+    if (url === "#") window.scrollTo({ top: 0, behavior: "smooth" });
+    else {
       const id = url.replace("#", "");
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      window.location.hash = id;
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     }
-
-    setOpen(false);
+    setIsMenuOpen(false);
   };
 
   return (
     <>
       {/* BUTTON */}
       <button
-        onClick={() => setOpen(!open)}
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
         className="fixed top-6 right-6 z-[60] w-12 h-12 flex items-center justify-center group"
       >
-        {/* LINE 1 */}
         <span
-          className={`absolute w-9 h-[3px] bg-white rounded-full transition-all duration-300 origin-center
+          className={`absolute left-1/2 top-1/2 w-9 h-[3px] bg-white rounded-full 
+          -translate-x-1/2 transition-all duration-300
           ${
-            open
-              ? "rotate-45 translate-y-0"
-              : "-translate-y-[7px] group-hover:-translate-y-[4px] group-hover:rotate-[6deg]"
+            isMenuOpen
+              ? "rotate-45 -translate-y-1/2"
+              : "-translate-y-[8px] group-hover:-translate-y-[4px] group-hover:rotate-[8deg]"
           }`}
         />
-
-        {/* LINE 2 */}
         <span
-          className={`absolute w-9 h-[3px] bg-white rounded-full transition-all duration-300 origin-center
+          className={`absolute left-1/2 top-1/2 w-9 h-[3px] bg-white rounded-full 
+          -translate-x-1/2 transition-all duration-300
           ${
-            open
-              ? "-rotate-45 translate-y-0"
-              : "translate-y-[7px] group-hover:translate-y-[4px] group-hover:-rotate-[6deg]"
+            isMenuOpen
+              ? "-rotate-45 -translate-y-1/2"
+              : "translate-y-[8px] group-hover:translate-y-[4px] group-hover:-rotate-[8deg]"
           }`}
         />
       </button>
 
       {/* OVERLAY */}
       <div
-        onClick={() => setOpen(false)}
-        className={`fixed inset-0 bg-black/70 z-[40] transition-all duration-300 ${
-          open
+        onClick={() => setIsMenuOpen(false)}
+        className={`fixed inset-0 bg-black/70 z-[40] transition-all duration-300
+        ${
+          isMenuOpen
             ? "opacity-100 visible"
             : "opacity-0 invisible pointer-events-none"
         }`}
@@ -76,66 +81,82 @@ export default function Navbar() {
 
       {/* SIDEBAR */}
       <div
-        className={`fixed top-0 right-0 h-full w-[85vw] max-w-[550px]
-        bg-neutral-900 text-white z-[50]
-        transition-transform duration-500 flex flex-col p-8
-        ${open ? "translate-x-0" : "translate-x-full"}`}
+        className={`fixed top-0 right-0 h-[100vh] w-[500px] max-w-[calc(100vw-3rem)]
+        z-[50] overflow-hidden flex flex-col py-10
+        transition-transform duration-700
+        ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-        <div className="flex-1 flex items-center justify-center">
-          <div className="flex flex-col md:flex-row w-full items-start md:items-center gap-12 md:gap-20 md:justify-center">
-            {/* MENU */}
-            <div className="text-left">
-              <p className="text-white/60 mb-5">MENU</p>
-              <ul className="space-y-4">
-                {MENU.map((item, idx) => (
-                  <li key={item.name}>
-                    <button
-                      onClick={() => handleNavigate(item.url)}
-                      className="group flex items-center gap-3 text-lg hover:underline"
-                    >
-                      <span
-                        className={`w-3.5 h-3.5 rounded-full flex items-center justify-center
-                        transition-all group-hover:scale-[2]
-                        ${COLORS[idx]}`}
+        {/* الخلفية الدائرية */}
+        <div
+          className={`absolute inset-0 rounded-full bg-neutral-800 transition-transform duration-700 
+            ${isMenuOpen ? "scale-150 translate-x-0" : "scale-0"}`}
+          style={{ zIndex: 10 }}
+        />
+
+        {/* المحتوى */}
+        <div className="relative z-20 flex flex-col h-full">
+          <div className="grow flex items-center w-full max-w-[300px] mx-8 sm:mx-auto">
+            <div className="flex gap-10 flex-col w-full">
+              {/* SOCIAL */}
+              <div>
+                <p className="text-neutral-400 mb-6">SOCIAL</p>
+                <ul className="space-y-3">
+                  {SOCIAL_LINKS.map((link) => (
+                    <li key={link.name}>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-lg hover:underline text-neutral-200"
                       >
-                        <MoveUpRight
-                          size={10}
-                          className="scale-0 group-hover:scale-100 transition-all"
-                        />
-                      </span>
+                        {link.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-                      {item.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* SOCIAL */}
-            <div className="text-left">
-              <p className="text-white/60 mb-5">SOCIAL</p>
-              <ul className="space-y-3">
-                {SOCIAL.map((s) => (
-                  <li key={s.name}>
-                    <a href={s.url} className="hover:underline">
-                      {s.name}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              {/* MENU */}
+              <div>
+                <p className="text-neutral-400 mb-6">MENU</p>
+                <ul className="space-y-4 text-neutral-200">
+                  {MENU_LINKS.map((link, idx) => (
+                    <li key={link.name}>
+                      <button
+                        onClick={() => handleNavigate(link.url)}
+                        className="group flex items-center gap-3 text-xl"
+                      >
+                        <span
+                          className={`w-3.5 h-3.5 rounded-full flex items-center justify-center 
+                          transition-all duration-300 group-hover:scale-[2]
+                          ${COLORS[idx]}`}
+                        >
+                          <MoveUpRight
+                            size={10}
+                            className="scale-0 group-hover:scale-100 transition-all"
+                          />
+                        </span>
+                        <span className="group-hover:underline">
+                          {link.name}
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* CONTACT */}
-        <div className="mt-auto text-left sm:pl-30 ">
-          <p className="text-white/60 mb-3">GET IN TOUCH</p>
-          <a className="block hover:underline" href="mailto:test@mail.com">
-            test@mail.com
-          </a>
-          <a className="block mt-2 hover:underline" href="tel:+201000000000">
-            +20 100 000 0000
-          </a>
+          {/* CONTACT */}
+          <div className="w-full max-w-[300px] mx-8 sm:mx-auto mt-auto">
+            <p className="text-gray-400 mb-4">GET IN TOUCH</p>
+            <a
+              className="block hover:underline text-neutral-400"
+              href={`mailto:${GENERAL_INFO.email}`}
+            >
+              {GENERAL_INFO.email}
+            </a>
+          </div>
         </div>
       </div>
     </>

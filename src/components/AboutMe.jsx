@@ -52,7 +52,7 @@ const AboutMe = () => {
 
   return (
     <section
-      className="lg:pt-25 px-3 sm:px-3 md:px-4 lg:px-3 xl:px-52"
+      className="lg:pt-10 px-3 sm:px-3 md:px-4 lg:px-3 xl:px-52"
       id="about-me"
     >
       <div ref={container}>
