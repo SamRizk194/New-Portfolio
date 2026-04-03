@@ -26,7 +26,6 @@ const GENERAL_INFO = { email: "test@mail.com" };
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // منع الاسكرول عند فتح المينيو
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
   }, [isMenuOpen]);
@@ -42,11 +41,11 @@ export default function Navbar() {
   };
 
   return (
-    <>
+    <div className="fixed inset-0 z-[2147483647] pointer-events-none isolate">
       {/* BUTTON */}
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="fixed top-6 right-6 z-[60] w-12 h-12 flex items-center justify-center group"
+        className="fixed top-6 right-6 z-[2147483647] w-12 h-12 flex items-center justify-center group pointer-events-auto"
       >
         <span
           className={`absolute left-1/2 top-1/2 w-9 h-[3px] bg-white rounded-full 
@@ -54,7 +53,7 @@ export default function Navbar() {
           ${
             isMenuOpen
               ? "rotate-45 -translate-y-1/2"
-              : "-translate-y-[8px] group-hover:-translate-y-[4px] group-hover:rotate-[8deg]"
+              : "-translate-y-[8px] group-hover:rotate-12 group-hover:-translate-y-[4px]"
           }`}
         />
         <span
@@ -63,7 +62,7 @@ export default function Navbar() {
           ${
             isMenuOpen
               ? "-rotate-45 -translate-y-1/2"
-              : "translate-y-[8px] group-hover:translate-y-[4px] group-hover:-rotate-[8deg]"
+              : "translate-y-[8px] group-hover:-rotate-12 group-hover:translate-y-[4px]"
           }`}
         />
       </button>
@@ -71,7 +70,7 @@ export default function Navbar() {
       {/* OVERLAY */}
       <div
         onClick={() => setIsMenuOpen(false)}
-        className={`fixed inset-0 bg-black/70 z-[40] transition-all duration-300
+        className={`fixed inset-0 bg-black/70 transition-all duration-300 pointer-events-auto
         ${
           isMenuOpen
             ? "opacity-100 visible"
@@ -82,21 +81,19 @@ export default function Navbar() {
       {/* SIDEBAR */}
       <div
         className={`fixed top-0 right-0 h-[100vh] w-[500px] max-w-[calc(100vw-3rem)]
-        z-[50] overflow-hidden flex flex-col py-10
+        overflow-hidden flex flex-col py-10 pointer-events-auto
         transition-transform duration-700
         ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-        {/* الخلفية الدائرية */}
         <div
           className={`absolute inset-0 rounded-full bg-neutral-800 transition-transform duration-700 
             ${isMenuOpen ? "scale-150 translate-x-0" : "scale-0"}`}
-          style={{ zIndex: 10 }}
         />
 
-        {/* المحتوى */}
-        <div className="relative z-20 flex flex-col h-full">
+        <div className="relative z-10 flex flex-col h-full text-white">
           <div className="grow flex items-center w-full max-w-[300px] mx-8 sm:mx-auto">
-            <div className="flex gap-10 flex-col w-full">
+            {/* GRID للعمودين */}
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10 w-full">
               {/* SOCIAL */}
               <div>
                 <p className="text-neutral-400 mb-6">SOCIAL</p>
@@ -128,8 +125,7 @@ export default function Navbar() {
                       >
                         <span
                           className={`w-3.5 h-3.5 rounded-full flex items-center justify-center 
-                          transition-all duration-300 group-hover:scale-[2]
-                          ${COLORS[idx]}`}
+                          transition-all duration-300 group-hover:scale-[2] ${COLORS[idx]}`}
                         >
                           <MoveUpRight
                             size={10}
@@ -145,20 +141,10 @@ export default function Navbar() {
                 </ul>
               </div>
             </div>
-          </div>
-
-          {/* CONTACT */}
-          <div className="w-full max-w-[300px] mx-8 sm:mx-auto mt-auto">
-            <p className="text-gray-400 mb-4">GET IN TOUCH</p>
-            <a
-              className="block hover:underline text-neutral-400"
-              href={`mailto:${GENERAL_INFO.email}`}
-            >
-              {GENERAL_INFO.email}
-            </a>
+            {/* نهاية GRID */}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
