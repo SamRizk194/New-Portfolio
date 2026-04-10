@@ -17,7 +17,6 @@ const Contact = () => {
     setResult("Sending...");
 
     const formData = new FormData(event.target);
-
     formData.append("access_key", "64bc60b9-3ab1-4392-bcf3-c824527eabda");
 
     try {
@@ -41,10 +40,12 @@ const Contact = () => {
   };
 
   return (
-    <section className="mb-12 border-b border-white/5 pb-6 px-3 lg:px-40 mt-70 font-belanosima">
-      <div className="flex justify-between items-end mb-8">
+   <section className="mb-12 pb-6 px-3 lg:px-40 mt-70 font-belanosima">
+      
+      {/* HEADER + LINE UNDER IT */}
+      <div className="mb-8 border-b border-white/5 pb-6 flex justify-between items-end">
         <h1 className="text-[8vw] md:text-[6vw] leading-none font-bold uppercase tracking-tighter text-white">
-          Let's Talk <span className="text-[#00e65c] font-anton"> .</span>
+          Let's Talk <span className="text-[#00e65c] font-anton">.</span>
         </h1>
 
         <div className="hidden md:flex flex-col items-end text-right pb-2">
@@ -57,13 +58,14 @@ const Contact = () => {
         </div>
       </div>
 
+      {/* BODY */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        {/* contact */}
+        
+        {/* CONTACT */}
         <div className="lg:col-span-4 flex flex-col gap-4">
           <p className="text-lg text-zinc-400">
             Got a project? Let’s make it
-            <span className="text-white border-b border-[#4ade80]"> ninja</span>
-            .
+            <span className="text-white border-b border-[#4ade80]"> ninja</span>.
           </p>
 
           <a
@@ -94,62 +96,26 @@ const Contact = () => {
               <span>Damietta, Egypt</span>
             </div>
 
-            {/* social media icons */}
             <div className="flex gap-3 text-white">
-              <a
-                href="https://github.com/SamRizk194"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-[#4ade80] transition"
-              >
-                <Github size={18} />
+              <a href="https://github.com/SamRizk194" target="_blank" rel="noreferrer">
+                <Github size={18} className="hover:text-[#4ade80]" />
               </a>
-              <a
-                href="https://www.linkedin.com/in/sameh-rizk-abb5ba258"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-[#4ade80] transition"
-              >
-                <Linkedin size={18} />
+              <a href="https://www.linkedin.com/in/sameh-rizk-abb5ba258" target="_blank" rel="noreferrer">
+                <Linkedin size={18} className="hover:text-[#4ade80]" />
               </a>
-              <a
-                href="https://www.facebook.com/share/1GCB3g1Vtk/"
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-[#4ade80] transition"
-              >
-                <Facebook size={18} />
+              <a href="https://www.facebook.com/share/1GCB3g1Vtk/" target="_blank" rel="noreferrer">
+                <Facebook size={18} className="hover:text-[#4ade80]" />
               </a>
             </div>
           </div>
         </div>
 
-        {/* form */}
+        {/* FORM */}
         <div className="lg:col-span-8">
           <form
             className="relative overflow-hidden bg-[#0e0e10] p-6 md:p-8 rounded-2xl border border-white/10 shadow-2xl"
             onSubmit={handleSubmit}
           >
-            <div className="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100"
-                height="100"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="text-[#4ade80]"
-              >
-                <path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" />
-                <path d="M20 2v4" />
-                <path d="M22 4h-4" />
-                <circle cx="4" cy="20" r="2" />
-              </svg>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div className="space-y-1.5">
                 <label className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 ml-1">
@@ -158,8 +124,7 @@ const Contact = () => {
                 <input
                   type="text"
                   name="name"
-                  placeholder="Enter your name"
-                  className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white text-sm outline-none focus:border-[#4ade80]/50 transition-all"
+                  className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white text-sm outline-none focus:border-[#4ade80]/50"
                   required
                 />
               </div>
@@ -171,8 +136,7 @@ const Contact = () => {
                 <input
                   type="email"
                   name="email"
-                  placeholder="email@example.com"
-                  className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white text-sm outline-none focus:border-[#4ade80]/50 transition-all"
+                  className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white text-sm outline-none focus:border-[#4ade80]/50"
                   required
                 />
               </div>
@@ -185,10 +149,9 @@ const Contact = () => {
               <textarea
                 name="message"
                 rows="3"
-                placeholder="I have an idea for..."
-                className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white text-sm outline-none focus:border-[#4ade80]/50 transition-all resize-none"
+                className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white text-sm outline-none focus:border-[#4ade80]/50 resize-none"
                 required
-              ></textarea>
+              />
             </div>
 
             <button
@@ -196,11 +159,9 @@ const Contact = () => {
               className="group w-full bg-white hover:bg-[#4ade80] text-black font-bold uppercase tracking-widest py-4 rounded-lg flex items-center justify-center gap-2 transition-all duration-500"
             >
               Send Message
-              <span className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                <ArrowUpRight className="w-5 h-5 text-black" />
-              </span>
+              <ArrowUpRight className="w-5 h-5 text-black group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </button>
-            {/* massage */}
+
             {result && (
               <p className="text-sm text-[#4ade80] mt-2 font-medium">
                 {result}

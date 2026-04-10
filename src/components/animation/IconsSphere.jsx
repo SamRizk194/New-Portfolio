@@ -14,9 +14,9 @@ function useDeviceScale() {
     const updateScale = () => {
       const width = window.innerWidth;
       if (width < 768) {
-        setScaleFactor(0.7); // موبايل
+        setScaleFactor(0.7);
       } else {
-        setScaleFactor(1); // كمبيوتر
+        setScaleFactor(1);
       }
     };
 
@@ -55,6 +55,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
 
   const handlePointerMove = (e) => {
     if (!dragging) return;
+
     const [x, y] = getPointerPosition(e);
     const [lastX, lastY] = lastPointer.current;
 
@@ -65,6 +66,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
       new THREE.Vector3(1, 0, 0),
       deltaY
     );
+
     const qY = new THREE.Quaternion().setFromAxisAngle(
       new THREE.Vector3(0, 1, 0),
       deltaX
@@ -74,6 +76,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
       qY,
       groupRef.current.quaternion
     );
+
     groupRef.current.quaternion.multiplyQuaternions(
       qX,
       groupRef.current.quaternion
@@ -87,12 +90,15 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
   useFrame(() => {
     if (!groupRef.current) return;
 
+
     const axis = new THREE.Vector3(
-      Math.random(),
-      Math.random(),
-      Math.random()
+      Math.random() * 0.3,
+      Math.random() * 0.3,
+      Math.random() * 0.3
     ).normalize();
-    const angle = 0.002;
+
+    const angle = 0.0006;
+
     const q = new THREE.Quaternion().setFromAxisAngle(axis, angle);
 
     if (!dragging) {
@@ -107,6 +113,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
     const cameraDir = new THREE.Vector3()
       .subVectors(camera.position, groupRef.current.position)
       .normalize();
+
     const newVisibility = [];
 
     MY_STACK.skills.forEach((_, i) => {
@@ -117,13 +124,13 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
       const y = radius * Math.cos(phi);
       const z = radius * Math.sin(phi) * Math.sin(theta);
 
-      const localPos = new THREE.Vector3(x, y, z);
-      const worldPos = localPos.clone();
+      const worldPos = new THREE.Vector3(x, y, z);
       groupRef.current.localToWorld(worldPos);
 
       const iconDir = new THREE.Vector3()
         .subVectors(worldPos, groupRef.current.position)
         .normalize();
+
       let dot = iconDir.dot(cameraDir);
       dot = THREE.MathUtils.clamp(dot, 0, 1);
 
@@ -202,11 +209,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
             <Html
               center
               style={{
-                pointerEvents: dragging
-                  ? "none"
-                  : brightness > 0.1
-                  ? "auto"
-                  : "none",
+                pointerEvents: dragging ? "none" : brightness > 0.1 ? "auto" : "none",
                 zIndex: 10,
               }}
             >

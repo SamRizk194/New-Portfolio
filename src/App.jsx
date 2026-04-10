@@ -11,6 +11,7 @@ import MyProjects from "./components/MyProjects";
 import Navbar from "./components/Navbar";
 import ScrollProgressIndicator from "./components/animation/ScrollProgressIndicator";
 import IconsSphere from "./components/animation/IconsSphere";
+import Footer from "./components/Footer";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -52,6 +53,7 @@ export default function App() {
         <Skills />
         <MyProjects />
         <Contact />
+        <Footer />
       </div>
 
       <div
