@@ -10,7 +10,7 @@ const Skills = () => {
       </h2>
 
       <p className="slide-up text-5xl font-anton leading-none muted-foreground uppercase">
-        SKILLS & TOOLS
+        My Skills
       </p>
 
       <IconsSphere />

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MoveUpRight } from "lucide-react";
+import { MoveUpRight, Github, Linkedin, Facebook } from "lucide-react";
 
 const COLORS = [
   "bg-yellow-500 text-black",
@@ -11,17 +11,14 @@ const COLORS = [
 const MENU_LINKS = [
   { name: "Home", url: "#" },
   { name: "About Me", url: "#about-me" },
-  { name: "Experience", url: "#my-experience" },
   { name: "Projects", url: "#selected-projects" },
 ];
 
 const SOCIAL_LINKS = [
-  { name: "Facebook", url: "#" },
-  { name: "Twitter", url: "#" },
-  { name: "GitHub", url: "#" },
+  { name: "GitHub", url: "#", icon: Github },
+  { name: "LinkedIn", url: "#", icon: Linkedin },
+  { name: "Facebook", url: "#", icon: Facebook },
 ];
-
-const GENERAL_INFO = { email: "test@mail.com" };
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -42,6 +39,7 @@ export default function Navbar() {
 
   return (
     <div className="fixed inset-0 z-[2147483647] pointer-events-none isolate">
+
       {/* BUTTON */}
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -87,35 +85,19 @@ export default function Navbar() {
       >
         <div
           className={`absolute inset-0 rounded-full bg-neutral-800 transition-transform duration-700 
-            ${isMenuOpen ? "scale-150 translate-x-0" : "scale-0"}`}
+          ${isMenuOpen ? "scale-150" : "scale-0"}`}
         />
 
         <div className="relative z-10 flex flex-col h-full text-white">
-          <div className="grow flex items-center w-full max-w-[300px] mx-8 sm:mx-auto">
-            {/* GRID للعمودين */}
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-10 w-full">
-              {/* SOCIAL */}
-              <div>
-                <p className="text-neutral-400 mb-6">SOCIAL</p>
-                <ul className="space-y-3">
-                  {SOCIAL_LINKS.map((link) => (
-                    <li key={link.name}>
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-lg hover:underline text-neutral-200"
-                      >
-                        {link.name}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+          <div className="grow flex items-center w-full max-w-[320px] mx-8 sm:mx-auto">
 
-              {/* MENU */}
+            {/* TWO COLUMNS */}
+            <div className="grid grid-cols-2 gap-2 sm:gap-10 w-full">
+
+              {/* MENU - LEFT */}
               <div>
                 <p className="text-neutral-400 mb-6">MENU</p>
+
                 <ul className="space-y-4 text-neutral-200">
                   {MENU_LINKS.map((link, idx) => (
                     <li key={link.name}>
@@ -132,6 +114,7 @@ export default function Navbar() {
                             className="scale-0 group-hover:scale-100 transition-all"
                           />
                         </span>
+
                         <span className="group-hover:underline">
                           {link.name}
                         </span>
@@ -140,8 +123,38 @@ export default function Navbar() {
                   ))}
                 </ul>
               </div>
+
+              {/* SOCIAL - RIGHT */}
+              <div>
+                <p className="text-neutral-400 mb-6">SOCIAL</p>
+
+                <div className="flex flex-col gap-6">
+                  {SOCIAL_LINKS.map((link) => {
+                    const Icon = link.icon;
+                    return (
+                      <a
+                        key={link.name}
+                        href={link.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex items-center gap-3 text-neutral-200 transition-colors duration-300"
+                      >
+                        {/* ICON ONLY HOVER EFFECT */}
+                        <span className="text-neutral-200 hover:text-green-500 transition-colors duration-300">
+                          <Icon size={24} />
+                        </span>
+
+                        {/* TEXT ALWAYS NORMAL */}
+                        <span className="hover:text-neutral-100 transition">
+                          {link.name}
+                        </span>
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+
             </div>
-            {/* نهاية GRID */}
           </div>
         </div>
       </div>

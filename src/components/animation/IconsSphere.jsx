@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Html, PerspectiveCamera } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
@@ -13,11 +13,7 @@ function useDeviceScale() {
   useEffect(() => {
     const updateScale = () => {
       const width = window.innerWidth;
-      if (width < 768) {
-        setScaleFactor(0.7);
-      } else {
-        setScaleFactor(1);
-      }
+      setScaleFactor(width < 768 ? 0.7 : 1);
     };
 
     updateScale();
@@ -31,6 +27,7 @@ function useDeviceScale() {
 function GlobeWithHtmlIcons({ triggerAnimation }) {
   const groupRef = useRef();
   const baseRadius = 4.5;
+
   const [visibility, setVisibility] = useState([]);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -39,6 +36,34 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
 
   const [dragging, setDragging] = useState(false);
   const lastPointer = useRef([0, 0]);
+
+  const scrollYRef = useRef(0);
+
+  // ✅ تثبيت أماكن البداية مرة واحدة فقط
+  const initialPositions = useMemo(() => {
+    const dirs = ["top", "bottom", "left", "right", "front", "back"];
+
+    return MY_STACK.skills.map(() => {
+      const choice = dirs[Math.floor(Math.random() * dirs.length)];
+
+      switch (choice) {
+        case "top":
+          return [Math.random() * 20 - 10, 15, Math.random() * 20 - 10];
+        case "bottom":
+          return [Math.random() * 20 - 10, -15, Math.random() * 20 - 10];
+        case "left":
+          return [-20, Math.random() * 20 - 10, Math.random() * 20 - 10];
+        case "right":
+          return [20, Math.random() * 20 - 10, Math.random() * 20 - 10];
+        case "front":
+          return [Math.random() * 20 - 10, Math.random() * 20 - 10, 15];
+        case "back":
+          return [Math.random() * 20 - 10, Math.random() * 20 - 10, -15];
+        default:
+          return [0, 0, -15];
+      }
+    });
+  }, []);
 
   const getPointerPosition = (e) => {
     if (e.touches && e.touches.length > 0) {
@@ -72,36 +97,47 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
       deltaX
     );
 
-    groupRef.current.quaternion.multiplyQuaternions(
-      qY,
-      groupRef.current.quaternion
-    );
-
-    groupRef.current.quaternion.multiplyQuaternions(
-      qX,
-      groupRef.current.quaternion
-    );
+    groupRef.current.quaternion.multiplyQuaternions(qY, groupRef.current.quaternion);
+    groupRef.current.quaternion.multiplyQuaternions(qX, groupRef.current.quaternion);
 
     lastPointer.current = [x, y];
   };
 
   const handlePointerUp = () => setDragging(false);
 
+  // scroll rotation
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - scrollYRef.current;
+      scrollYRef.current = currentY;
+
+      if (!groupRef.current || dragging) return;
+
+      const angle = delta * 0.002;
+
+      const q = new THREE.Quaternion().setFromAxisAngle(
+        new THREE.Vector3(0, 1, 0),
+        angle
+      );
+
+      groupRef.current.quaternion.multiply(q);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [dragging]);
+
+  // idle rotation + visibility
   useFrame(() => {
     if (!groupRef.current) return;
 
-
-    const axis = new THREE.Vector3(
-      Math.random() * 0.3,
-      Math.random() * 0.3,
-      Math.random() * 0.3
-    ).normalize();
-
-    const angle = 0.0006;
-
-    const q = new THREE.Quaternion().setFromAxisAngle(axis, angle);
-
     if (!dragging) {
+      const q = new THREE.Quaternion().setFromAxisAngle(
+        new THREE.Vector3(0, 1, 0),
+        0.0002
+      );
+
       groupRef.current.quaternion.multiply(q);
     }
 
@@ -154,12 +190,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
     >
       <mesh>
         <sphereGeometry args={[radius, 40, 35]} />
-        <meshBasicMaterial
-          color="#6366f1"
-          wireframe
-          transparent
-          opacity={0.08}
-        />
+        <meshBasicMaterial color="#6366f1" wireframe transparent opacity={0.05} />
       </mesh>
 
       {MY_STACK.skills.map((item, i) => {
@@ -170,33 +201,10 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
         const finalY = radius * Math.cos(phi);
         const finalZ = radius * Math.sin(phi) * Math.sin(theta);
 
-        const getRandomStart = () => {
-          const dirs = ["top", "bottom", "left", "right", "front", "back"];
-          const choice = dirs[Math.floor(Math.random() * dirs.length)];
-          switch (choice) {
-            case "top":
-              return [Math.random() * 20 - 10, 15, Math.random() * 20 - 10];
-            case "bottom":
-              return [Math.random() * 20 - 10, -15, Math.random() * 20 - 10];
-            case "left":
-              return [-20, Math.random() * 20 - 10, Math.random() * 20 - 10];
-            case "right":
-              return [20, Math.random() * 20 - 10, Math.random() * 20 - 10];
-            case "front":
-              return [Math.random() * 20 - 10, Math.random() * 20 - 10, 15];
-            case "back":
-              return [Math.random() * 20 - 10, Math.random() * 20 - 10, -15];
-            default:
-              return [0, 0, -15];
-          }
-        };
-
-        const initialPosition = getRandomStart();
-
         const { position } = useSpring({
           position: triggerAnimation
             ? [finalX, finalY, finalZ]
-            : initialPosition,
+            : initialPositions[i],
           config: { mass: 3, tension: 50, friction: 25 },
         });
 
@@ -209,8 +217,8 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
             <Html
               center
               style={{
-                pointerEvents: dragging ? "none" : brightness > 0.1 ? "auto" : "none",
-                zIndex: 10,
+                pointerEvents:
+                  dragging ? "none" : brightness > 0.1 ? "auto" : "none",
               }}
             >
               <div
@@ -232,14 +240,22 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
                       hoveredIndex === i
                         ? "brightness(2) drop-shadow(0 0 10px white)"
                         : "none",
-                    transform: hoveredIndex === i ? "scale(1.4)" : "scale(1)",
+                    transform:
+                      hoveredIndex === i ? "scale(1.4)" : "scale(1)",
+                    transition: "all 0.2s ease-out",
                   }}
                 />
+
                 <div
                   className="mt-1 px-3 py-1 text-xs font-bold text-white rounded-full"
                   style={{
                     whiteSpace: "nowrap",
                     opacity: hoveredIndex === i ? 1 : 0,
+                    transform:
+                      hoveredIndex === i
+                        ? "translateY(0)"
+                        : "translateY(5px)",
+                    transition: "all 0.2s ease-out",
                     backgroundColor: item.color || "#6366f1",
                   }}
                 >
@@ -262,17 +278,11 @@ export default function FreeMovementSphere() {
 
   return (
     <div
-      className="flex justify-center items-center pt-35"
+      className="flex justify-center items-center pt-20"
       ref={ref}
       style={{ minHeight: "500px" }}
     >
-      <Canvas
-        style={{
-          width: "100%",
-          height: "500px",
-          touchAction: "none",
-        }}
-      >
+      <Canvas style={{ width: "100%", height: "500px", touchAction: "none" }}>
         <PerspectiveCamera makeDefault position={[0, 0, 12]} />
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
