@@ -1,13 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { Github, Linkedin, Facebook } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const MENU_LINKS = [
-  { name: "Home", url: "#" },
-  { name: "Projects", url: "#selected-projects" },
-  { name: "About", url: "#about-me" },
-  { name: "Contact", url: "#contact" },
+  { name: "Home", url: "/" },
+  { name: "Projects", url: "/projects" },
+  { name: "About", url: "/about" },
+  { name: "Contact", url: "/contact" },
 ];
+
 
 const SOCIAL_LINKS = [
   { name: "GitHub", url: "#", icon: Github },
@@ -18,6 +20,7 @@ const SOCIAL_LINKS = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRefs = useRef([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
@@ -82,16 +85,10 @@ export default function Navbar() {
     });
   };
 
-  const handleNavigate = (url) => {
-    if (url === "#") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const id = url.replace("#", "");
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }
-    setIsMenuOpen(false);
-  };
+const handleNavigate = (url) => {
+  navigate(url);
+  setIsMenuOpen(false);
+};
 
   return (
     <div

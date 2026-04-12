@@ -10,8 +10,12 @@ import Contact from "./components/Contact";
 import MyProjects from "./components/MyProjects";
 import Navbar from "./components/Navbar";
 import ScrollProgressIndicator from "./components/animation/ScrollProgressIndicator";
-import IconsSphere from "./components/animation/IconsSphere";
 import Footer from "./components/Footer";
+// Routing
+import { Routes, Route } from "react-router-dom";
+import About from "./components/pages/About"
+import Projects from "./components/pages/Projects"
+import Contacts from "./components/pages/Contacts"
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -46,15 +50,35 @@ export default function App() {
           zIndex: -4,
         }}
       />
-      <div className="relative z-10">
-        <Navbar />
-        <Hero />
-        <AboutMe />
-        <Skills />
-        <MyProjects />
-        <Contact />
-        <Footer />
-      </div>
+
+
+{/* Routing */}
+<div className="relative z-10 min-h-screen flex flex-col">
+  <Navbar />
+
+  <main className="flex-1">
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <Hero />
+            <AboutMe />
+            <Skills />
+            <MyProjects />
+            <Contact />
+          </>
+        }
+      />
+
+      <Route path="/about" element={<About />} />
+      <Route path="/projects" element={<Projects />} />
+      <Route path="/contact" element={<Contacts />} />
+    </Routes>
+  </main>
+
+  <Footer />
+</div>
 
       <div
         style={{
