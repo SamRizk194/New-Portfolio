@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   const [time, setTime] = useState("");
@@ -23,25 +24,39 @@ const Footer = () => {
   return (
     <footer className="w-full bg-black text-white px-5 sm:px-6 md:px-12 lg:px-20 pt-10 md:pt-12 pb-6 border-t border-white/10 font-belanosima">
       <div className="flex flex-col gap-10 md:grid md:grid-cols-3 md:gap-12">
-        
         {/* Left Section */}
         <div className="space-y-3 text-center md:text-left">
           <h2 className="text-lg md:text-xl font-bold tracking-tight">
             SAMEH<span className="text-[#4ade80]">.</span>
           </h2>
           <p className="text-sm text-zinc-400 max-w-xs mx-auto md:mx-0">
-            Front-End Developer crafting smooth, animated, and user-focused web experiences.
+            Front-End Developer crafting smooth, animated, and user-focused web
+            experiences.
           </p>
         </div>
 
         {/* Navigation */}
         <nav aria-label="Footer Navigation">
-          <ul className="flex flex-row justify-center gap-6 md:flex-col md:items-start md:gap-3 text-xs sm:text-sm uppercase tracking-widest text-zinc-400">
-            {["Home", "Projects", "About", "Contact"].map((item) => (
-              <li key={item}>
-                <button className="hover:text-[#4ade80] transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#4ade80] uppercase">
-                  {item}
-                </button>
+          <ul
+            className="flex flex-row justify-center gap-6 md:flex-col md:items-start md:gap-3 text-xs sm:text-sm
+          uppercase tracking-widest text-zinc-400"
+          >
+            {[
+              { name: "Home", path: "/" },
+              { name: "Projects", path: "/projects" },
+              { name: "About", path: "/about" },
+              { name: "Contact", path: "/contact" },
+            ].map((item) => (
+              <li key={item.name}>
+                <NavLink
+                  to={item.path}
+                  className={({ isActive }) =>
+                    `uppercase transition-colors focus:outline-none focus-visible:ring-1 focus-visible:ring-[#4ade80]
+                    ${isActive ? "text-[#4ade80]" : "hover:text-[#4ade80]"}`
+                  }
+                >
+                  {item.name}
+                </NavLink>
               </li>
             ))}
           </ul>

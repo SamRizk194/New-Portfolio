@@ -59,7 +59,7 @@ export default function Navbar() {
     menuRefs.current.forEach((el, i) => {
       if (!el) return;
       gsap.to(el, {
-        color: i === index ? "#4ade80" : "#ffffff",
+        color: i === index ? "#00e65c" : "#ffffff",
         duration: 0.3,
       });
     });
@@ -92,14 +92,14 @@ const handleNavigate = (url) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[2147483647] ${
+      className={`fixed inset-0 z-[99999999] ${
         isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
       }`}
     >
       {/* BUTTON */}
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="fixed top-6 right-6 z-[2147483647] w-12 h-12 flex items-center justify-center group pointer-events-auto"
+        className="fixed top-6 right-6 z-[99999999] w-12 h-12 flex items-center justify-center group pointer-events-auto"
       >
         {/* TOP LINE */}
         <span
@@ -166,7 +166,7 @@ const handleNavigate = (url) => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#4ade80] transition-colors duration-300"
+                    className="hover:text-[#00e65c] transition-colors duration-300"
                   >
                     <Icon size={30} />
                   </a>

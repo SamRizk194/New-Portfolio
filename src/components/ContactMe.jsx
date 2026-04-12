@@ -9,7 +9,7 @@ import {
   MapPin,
 } from "lucide-react";
 
-const Contact = () => {
+const ContactMe = () => {
   const [result, setResult] = useState("");
 
   const handleSubmit = async (event) => {
@@ -40,8 +40,7 @@ const Contact = () => {
   };
 
   return (
-   <section className="mb-12 pb-6 px-3 lg:px-40 mt-70 font-belanosima">
-      
+    <section className="mb-12 pb-6 px-3 lg:px-40 mt-70 font-belanosima">
       {/* HEADER + LINE UNDER IT */}
       <div className="mb-8 border-b border-white/5 pb-6 flex justify-between items-end">
         <h1 className="text-[8vw] md:text-[6vw] leading-none font-bold uppercase tracking-tighter text-white">
@@ -60,12 +59,12 @@ const Contact = () => {
 
       {/* BODY */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
         {/* CONTACT */}
         <div className="lg:col-span-4 flex flex-col gap-4">
           <p className="text-lg text-zinc-400">
             Got a project? Let’s make it
-            <span className="text-white border-b border-[#4ade80]"> ninja</span>.
+            <span className="text-white border-b border-[#4ade80]"> ninja</span>
+            .
           </p>
 
           <a
@@ -97,13 +96,25 @@ const Contact = () => {
             </div>
 
             <div className="flex gap-3 text-white">
-              <a href="https://github.com/SamRizk194" target="_blank" rel="noreferrer">
+              <a
+                href="https://github.com/SamRizk194"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Github size={18} className="hover:text-[#4ade80]" />
               </a>
-              <a href="https://www.linkedin.com/in/sameh-rizk-abb5ba258" target="_blank" rel="noreferrer">
+              <a
+                href="https://www.linkedin.com/in/sameh-rizk-abb5ba258"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Linkedin size={18} className="hover:text-[#4ade80]" />
               </a>
-              <a href="https://www.facebook.com/share/1GCB3g1Vtk/" target="_blank" rel="noreferrer">
+              <a
+                href="https://www.facebook.com/share/1GCB3g1Vtk/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Facebook size={18} className="hover:text-[#4ade80]" />
               </a>
             </div>
@@ -174,4 +185,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactMe;

@@ -40,8 +40,8 @@ function MyProjects() {
   }, []);
 
   return (
-    <div className="mt-30 sm:mt-50 px-3 lg:px-40 foreground">
-      <h2 className="mb-10 lg:mb-20 text-xl flex items-center gap-2.5">
+    <div className="mt-12 sm:mt-30 sm:mt-50 mx-3 lg:mx-40 foreground">
+      <h2 className="mb-10 lg:mb-20 text-xl sm:ml-[50px] flex items-center gap-2.5">
         <Flower size={30} />
         My Projects
       </h2>

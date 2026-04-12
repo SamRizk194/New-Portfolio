@@ -1,21 +1,13 @@
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import ParticlesBackground from "./components/animation/ParticlesBackground";
-import Hero from "./components/Hero";
-import AboutMe from "./components/AboutMe";
-import Skills from "./components/Skills";
 import CustomCursor from "./components/animation/CustomCursor";
 import Intro from "./components/animation/Intro";
-import Contact from "./components/Contact";
-import MyProjects from "./components/MyProjects";
 import Navbar from "./components/Navbar";
 import ScrollProgressIndicator from "./components/animation/ScrollProgressIndicator";
 import Footer from "./components/Footer";
-// Routing
-import { Routes, Route } from "react-router-dom";
-import About from "./components/pages/About"
-import Projects from "./components/pages/Projects"
-import Contacts from "./components/pages/Contacts"
+
+import AnimatedRoutes from "./components/animation/loader/AnimatedRoutes";
 
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -24,6 +16,8 @@ export default function App() {
     <div>
       <CustomCursor />
       <ScrollProgressIndicator />
+
+      {/* 🎇 Background */}
       <Canvas
         style={{
           position: "fixed",
@@ -38,6 +32,8 @@ export default function App() {
       >
         <ParticlesBackground />
       </Canvas>
+
+      {/* Overlay */}
       <div
         style={{
           position: "fixed",
@@ -51,35 +47,18 @@ export default function App() {
         }}
       />
 
+      {/* UI */}
+      <div className="relative z-10 min-h-screen flex flex-col">
+        <Navbar />
 
-{/* Routing */}
-<div className="relative z-10 min-h-screen flex flex-col">
-  <Navbar />
+        <main className="flex-1">
+          <AnimatedRoutes />
+        </main>
 
-  <main className="flex-1">
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <>
-            <Hero />
-            <AboutMe />
-            <Skills />
-            <MyProjects />
-            <Contact />
-          </>
-        }
-      />
+        <Footer />
+      </div>
 
-      <Route path="/about" element={<About />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/contact" element={<Contacts />} />
-    </Routes>
-  </main>
-
-  <Footer />
-</div>
-
+      {/* Overlay */}
       <div
         style={{
           position: "fixed",
@@ -92,6 +71,8 @@ export default function App() {
           zIndex: -3,
         }}
       />
+
+      {/* Intro */}
       {showIntro && <Intro onFinish={() => setShowIntro(false)} />}
     </div>
   );
