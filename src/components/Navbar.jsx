@@ -94,12 +94,15 @@ export default function Navbar() {
   };
 
   return (
-    <div className="fixed inset-0 z-[2147483647]">
-
+    <div
+      className={`fixed inset-0 z-[2147483647] ${
+        isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
+      }`}
+    >
       {/* BUTTON */}
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="fixed top-6 right-6 z-[2147483647] w-12 h-12 flex items-center justify-center group"
+        className="fixed top-6 right-6 z-[2147483647] w-12 h-12 flex items-center justify-center group pointer-events-auto"
       >
         {/* TOP LINE */}
         <span
@@ -139,7 +142,6 @@ export default function Navbar() {
         transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)]
         ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
-
         {/* MENU LINKS */}
         <div className="flex flex-col items-center gap-10">
           {MENU_LINKS.map((link, i) => (
@@ -149,11 +151,7 @@ export default function Navbar() {
               onMouseEnter={() => handleHover(i)}
               onMouseLeave={resetHover}
               onClick={() => handleNavigate(link.url)}
-              className="
-                text-4xl md:text-7xl font-bold uppercase tracking-tighter
-                transform-gpu origin-center
-                text-white
-              "
+              className="text-4xl md:text-7xl font-bold uppercase tracking-tighter transform-gpu origin-center text-white"
             >
               {link.name}
             </button>
@@ -161,7 +159,7 @@ export default function Navbar() {
         </div>
 
         {/* SOCIAL */}
-        <div className="absolute bottom-10 md:bottom-20">
+        <div className="absolute bottom-10 md:bottom-20 pointer-events-auto">
           <ul className="flex items-center gap-6 justify-center">
             {SOCIAL_LINKS.map((link) => {
               const Icon = link.icon;
@@ -180,8 +178,7 @@ export default function Navbar() {
             })}
           </ul>
         </div>
-
       </div>
     </div>
   );
-}  
+}
