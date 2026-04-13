@@ -22,7 +22,7 @@ const ProjectCard = ({ project }) => {
           <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
 
           {/* TOP BADGES */}
-          <div className="absolute top-3 inset-x-3 flex justify-between items-start z-20">
+          <div className="absolute top-3 inset-x-3 flex justify-between items-start z-0">
             <div className="flex items-center gap-1.5 px-2 py-1 bg-black/50 backdrop-blur-md rounded border border-white/10">
               <Construction className="w-3 h-3 text-[#4ade80] animate-pulse" />
               <span className="text-[9px] text-white/80 uppercase tracking-widest">
@@ -36,7 +36,7 @@ const ProjectCard = ({ project }) => {
           </div>
 
           {/* CENTER ICON */}
-          <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+          <div className="absolute inset-0 flex items-center justify-center z-0 pointer-events-none">
             <div className="flex flex-col items-center gap-1.5 opacity-60 group-hover:opacity-100 transition-opacity duration-500">
               <div className="p-2 rounded-full bg-[#4ade80]/10 border border-[#4ade80]/20">
                 <Construction className="w-5 h-5 text-[#4ade80]" />
@@ -80,9 +80,6 @@ const ProjectCard = ({ project }) => {
     );
   }
 
-  // =========================
-  // 🧼 NORMAL CARD (UNCHANGED + EYE ICON UPDATED)
-  // =========================
   return (
     <div
       className="

@@ -1,4 +1,5 @@
 import { useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 import gsap from "gsap";
 
 const CustomCursor = () => {
@@ -28,7 +29,7 @@ const CustomCursor = () => {
     };
   }, []);
 
-  return (
+  return createPortal(
     <svg
       width="27"
       height="30"
@@ -37,7 +38,7 @@ const CustomCursor = () => {
         position: "fixed",
         top: 0,
         left: 0,
-        zIndex: 50,
+        zIndex: 10000,
         pointerEvents: "none",
         opacity: 0,
         transform: "translate(-50%, -50%)",
@@ -51,7 +52,8 @@ const CustomCursor = () => {
         fill="#fff"
         stroke="rgba(0,0,0,0.5)"
       />
-    </svg>
+    </svg>,
+    document.body,
   );
 };
 

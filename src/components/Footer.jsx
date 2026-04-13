@@ -37,10 +37,7 @@ const Footer = () => {
 
         {/* Navigation */}
         <nav aria-label="Footer Navigation">
-          <ul
-            className="flex flex-row justify-center gap-6 md:flex-col md:items-start md:gap-3 text-xs sm:text-sm
-          uppercase tracking-widest text-zinc-400"
-          >
+          <ul className="flex flex-row justify-center gap-6 md:flex-col md:items-start md:gap-3 text-xs sm:text-sm uppercase tracking-widest text-zinc-400">
             {[
               { name: "Home", path: "/" },
               { name: "Projects", path: "/projects" },
@@ -70,9 +67,21 @@ const Footer = () => {
 
           <ul className="flex gap-5">
             {[
-              { icon: Github, label: "GitHub", link: "#" },
-              { icon: Linkedin, label: "LinkedIn", link: "#" },
-              { icon: Mail, label: "Email", link: "#" },
+              {
+                icon: Github,
+                label: "GitHub",
+                link: "https://github.com/SamRizk194",
+              },
+              {
+                icon: Linkedin,
+                label: "LinkedIn",
+                link: "https://www.linkedin.com/in/sameh-rizk-abb5ba258",
+              },
+              {
+                icon: Mail,
+                label: "Email",
+                link: "mailto:samehrizk1993@gmail.com",
+              },
             ].map(({ icon: Icon, label, link }) => (
               <li key={label} className="relative group">
                 <a

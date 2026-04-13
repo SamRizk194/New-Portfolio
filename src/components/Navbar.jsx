@@ -10,11 +10,22 @@ const MENU_LINKS = [
   { name: "Contact", url: "/contact" },
 ];
 
-
 const SOCIAL_LINKS = [
-  { name: "GitHub", url: "#", icon: Github },
-  { name: "LinkedIn", url: "#", icon: Linkedin },
-  { name: "Facebook", url: "#", icon: Facebook },
+  {
+    name: "GitHub",
+    url: "https://github.com/SamRizk194",
+    icon: Github,
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/sameh-rizk-abb5ba258",
+    icon: Linkedin,
+  },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/share/1GCB3g1Vtk/",
+    icon: Facebook,
+  },
 ];
 
 export default function Navbar() {
@@ -40,7 +51,7 @@ export default function Navbar() {
           duration: 0.9,
           stagger: 0.07,
           ease: "power4.out",
-        }
+        },
       );
     }
   }, [isMenuOpen]);
@@ -85,23 +96,22 @@ export default function Navbar() {
     });
   };
 
-const handleNavigate = (url) => {
-  navigate(url);
-  setIsMenuOpen(false);
-};
+  const handleNavigate = (url) => {
+    navigate(url);
+    setIsMenuOpen(false);
+  };
 
   return (
     <div
-      className={`fixed inset-0 z-[99999999] ${
+      className={`fixed inset-0 z-10 ${
         isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
       }`}
     >
       {/* BUTTON */}
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="fixed top-6 right-6 z-[99999999] w-12 h-12 flex items-center justify-center group pointer-events-auto"
+        className="fixed top-6 right-6 z-10 w-12 h-12 flex items-center justify-center group pointer-events-auto"
       >
-        {/* TOP LINE */}
         <span
           className={`absolute left-1/2 top-1/2 w-9 h-[3px] bg-white rounded-full 
           -translate-x-1/2 transition-all duration-300
@@ -112,7 +122,6 @@ const handleNavigate = (url) => {
           }`}
         />
 
-        {/* BOTTOM LINE */}
         <span
           className={`absolute left-1/2 top-1/2 w-9 h-[3px] bg-white rounded-full 
           -translate-x-1/2 transition-all duration-300

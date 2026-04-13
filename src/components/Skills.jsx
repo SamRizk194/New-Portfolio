@@ -13,7 +13,7 @@ const Skills = () => {
         My Skills
       </p>
 
-      {/* <IconsSphere /> */}
+      <IconsSphere />
     </div>
   );
 };

@@ -89,16 +89,22 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
 
     const qX = new THREE.Quaternion().setFromAxisAngle(
       new THREE.Vector3(1, 0, 0),
-      deltaY
+      deltaY,
     );
 
     const qY = new THREE.Quaternion().setFromAxisAngle(
       new THREE.Vector3(0, 1, 0),
-      deltaX
+      deltaX,
     );
 
-    groupRef.current.quaternion.multiplyQuaternions(qY, groupRef.current.quaternion);
-    groupRef.current.quaternion.multiplyQuaternions(qX, groupRef.current.quaternion);
+    groupRef.current.quaternion.multiplyQuaternions(
+      qY,
+      groupRef.current.quaternion,
+    );
+    groupRef.current.quaternion.multiplyQuaternions(
+      qX,
+      groupRef.current.quaternion,
+    );
 
     lastPointer.current = [x, y];
   };
@@ -118,7 +124,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
 
       const q = new THREE.Quaternion().setFromAxisAngle(
         new THREE.Vector3(0, 1, 0),
-        angle
+        angle,
       );
 
       groupRef.current.quaternion.multiply(q);
@@ -135,14 +141,14 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
     if (!dragging) {
       const q = new THREE.Quaternion().setFromAxisAngle(
         new THREE.Vector3(0, 1, 0),
-        0.0002
+        0.0002,
       );
 
       groupRef.current.quaternion.multiply(q);
     }
 
     const camera = groupRef.current.parent?.children.find(
-      (obj) => obj.type === "PerspectiveCamera"
+      (obj) => obj.type === "PerspectiveCamera",
     );
     if (!camera) return;
 
@@ -190,7 +196,12 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
     >
       <mesh>
         <sphereGeometry args={[radius, 40, 35]} />
-        <meshBasicMaterial color="#6366f1" wireframe transparent opacity={0.05} />
+        <meshBasicMaterial
+          color="#6366f1"
+          wireframe
+          transparent
+          opacity={0.05}
+        />
       </mesh>
 
       {MY_STACK.skills.map((item, i) => {
@@ -216,9 +227,13 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
           <animated.group key={item.name} position={position}>
             <Html
               center
+              zIndexRange={[0, 5]}
               style={{
-                pointerEvents:
-                  dragging ? "none" : brightness > 0.1 ? "auto" : "none",
+                pointerEvents: dragging
+                  ? "none"
+                  : brightness > 0.1
+                    ? "auto"
+                    : "none",
               }}
             >
               <div
@@ -240,8 +255,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
                       hoveredIndex === i
                         ? "brightness(2) drop-shadow(0 0 10px white)"
                         : "none",
-                    transform:
-                      hoveredIndex === i ? "scale(1.4)" : "scale(1)",
+                    transform: hoveredIndex === i ? "scale(1.4)" : "scale(1)",
                     transition: "all 0.2s ease-out",
                   }}
                 />
@@ -252,9 +266,7 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
                     whiteSpace: "nowrap",
                     opacity: hoveredIndex === i ? 1 : 0,
                     transform:
-                      hoveredIndex === i
-                        ? "translateY(0)"
-                        : "translateY(5px)",
+                      hoveredIndex === i ? "translateY(0)" : "translateY(5px)",
                     transition: "all 0.2s ease-out",
                     backgroundColor: item.color || "#6366f1",
                   }}
