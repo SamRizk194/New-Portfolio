@@ -1,9 +1,37 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Construction, Terminal } from "lucide-react";
+import InceptionAlertCard from "../components/animation/InceptionAlertCard";
 
 function FirstProjectCard({ project }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="mb-5 lg:mb-15 font-belanosima">
+      {/* ================= MODAL ================= */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="fixed inset-0 z-[999] flex items-center justify-center bg-black/70 backdrop-blur-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <InceptionAlertCard onClose={() => setOpen(false)} />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ================= ORIGINAL CARD (UNCHANGED) ================= */}
       <div className="group relative w-full max-w-5xl mx-auto min-h-[360px] p-5 sm:p-6 md:p-8 rounded-[25px] lg:rounded-[40px] border border-[#22ff88]/40 bg-[#0c0c0e] shadow-[0_0_35px_rgba(34,255,136,0.08)] overflow-hidden">
         {/* GRID BACKGROUND */}
         <div
@@ -15,7 +43,7 @@ function FirstProjectCard({ project }) {
           }}
         />
 
-        {/* SCAN LINE (Framer Motion) */}
+        {/* SCAN LINE */}
         <motion.div
           initial={{ top: "-20px" }}
           animate={{ top: "calc(100% + 20px)" }}
@@ -33,9 +61,8 @@ function FirstProjectCard({ project }) {
           }}
         />
 
-        {/* HEADER */}
+        {/* HEADER (UNCHANGED) */}
         <div className="relative z-10 flex flex-col lg:flex-row justify-between items-start lg:items-center mb-6 md:mb-10 gap-6">
-          {/* LEFT SIDE */}
           <div className="flex items-center gap-4 sm:gap-6 w-full lg:w-auto">
             <h2 className="text-4xl sm:text-6xl md:text-8xl tracking-tighter font-black text-[#22ff88]/30">
               01
@@ -44,7 +71,6 @@ function FirstProjectCard({ project }) {
             <div className="h-12 w-[1px] bg-white/20" />
 
             <div className="space-y-1">
-              {/* SYSTEM STATUS */}
               <div className="flex items-center gap-2 animate-pulse">
                 <h3 className="text-xs font-semibold uppercase text-gray-500 tracking-widest">
                   System_Deploying
@@ -52,22 +78,23 @@ function FirstProjectCard({ project }) {
                 <Construction className="text-[#22ff88] w-4 h-4" />
               </div>
 
-              {/* PROJECT NAME */}
               <p className="text-[#22ff88] text-xl font-medium drop-shadow-[0_0_4px_#22ff88]">
                 {project.name}
               </p>
             </div>
           </div>
 
-          {/* STATUS BADGE */}
           <div className="flex items-center gap-2 px-3 py-1.5 bg-black/60 backdrop-blur-md rounded-lg border border-[#22ff88]/40 text-[#22ff88] font-mono text-[10px] sm:text-xs shadow-[0_0_8px_#22ff8840]">
             <Terminal className="w-4 h-4 drop-shadow-[0_0_6px_#22ff88]" />
             STATUS: COMPILING…
           </div>
         </div>
 
-        {/* IMAGE */}
-        <div className="relative w-full h-[220px] sm:h-[300px] md:h-[380px] overflow-hidden rounded-[15px] lg:rounded-[35px] bg-zinc-900 group">
+        {/* IMAGE (ONLY ADD CLICK) */}
+        <div
+          className="relative w-full h-[220px] sm:h-[300px] md:h-[380px] overflow-hidden rounded-[15px] lg:rounded-[35px] bg-zinc-900 group cursor-pointer"
+          onClick={() => setOpen(true)}
+        >
           <motion.img
             src={project.image}
             alt={project.name}
@@ -81,7 +108,6 @@ function FirstProjectCard({ project }) {
             "
           />
 
-          {/* GREEN HOVER OVERLAY */}
           <div
             className="
             absolute inset-0
@@ -94,7 +120,7 @@ function FirstProjectCard({ project }) {
           "
           />
 
-          {/* OVERLAY CONTENT - ثابت بدون حركة */}
+          {/* OVERLAY CONTENT (UNCHANGED) */}
           <div className="absolute bottom-3 left-3 right-3 md:bottom-6 md:left-6 md:right-6 p-3 md:p-4 bg-zinc-900/80 backdrop-blur-xl rounded-xl md:rounded-2xl border border-white/5 z-11 transition-opacity duration-500">
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">

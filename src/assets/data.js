@@ -19,11 +19,12 @@ import viteIcon from "./my-stack/vite.svg";
 import lottieIcon from "./my-stack/lottie.webp";
 
 //projects
-import ecommerce from "../assets/my-stack/projects/e-commerce.png";
 import portfolio from "../assets/my-stack/projects/portfolio.png";
+import ecommerce from "../assets/my-stack/projects/e-commerce.png";
 import agency from "../assets/my-stack/projects/agency-ai.png";
 import foodera from "../assets/my-stack/projects/foodera.png";
 import edusity from "../assets/my-stack/projects/edusity.png";
+import portfoliov1 from "../assets/my-stack/projects/portfoliov1.png";
 import bondi from "../assets/my-stack/projects/bondi.png";
 import fylo from "../assets/my-stack/projects/fylo.png";
 import grocify from "../assets/my-stack/projects/grocify.png";
@@ -53,26 +54,33 @@ export const MY_STACK = {
 
 export const Projects = [
   {
-    name: "E-Commerce",
+    name: "This Portfolio – You're Looking At It",
     order: "01",
+    link: "#",
+    image: portfolio,
+    description:
+      " A creative developer portfolio built with React, Tailwind CSS, GSAP, and a bit of obsession.",
+    highlight: true,
+  },
+  {
+    name: "E-Commerce",
+    order: "02",
     link: "https://sam-e-commerce.netlify.app/",
     image: ecommerce,
     description:
       "An e-commerce site built with React, Vite, and Redux Toolkit, featuring a smooth shopping cart, responsive design, and fast performance.",
-    badge: "You Are Here",
   },
   {
     name: "Agency-Ai",
-    order: "02",
+    order: "03",
     link: "https://sam-agenciai.netlify.app/",
     image: agency,
     description:
       "Modern agency website built with React & Tailwind, fully responsive with smooth animations and Web3Forms.",
-    highlight: true,
   },
   {
     name: "Edusity",
-    order: "03",
+    order: "04",
     link: "https://sam-edusity.netlify.app/",
     image: edusity,
     description:
@@ -80,23 +88,23 @@ export const Projects = [
   },
   {
     name: "Foodera",
-    order: "04",
+    order: "05",
     link: "https://samfoodera.netlify.app/",
     image: foodera,
     description:
       "A React-based website for exploring food and recipes, built with a responsive design using Bootstrap and React Bootstrap components.",
   },
   {
-    name: "Portfolio",
-    order: "05",
+    name: "Portfolio V.1",
+    order: "06",
     link: "https://sameh-rizk.netlify.app/",
-    image: portfolio,
+    image: portfoliov1,
     description: "",
   },
 
   {
     name: "Bondi",
-    order: "06",
+    order: "07",
     link: "https://bondi-project.netlify.app/",
     image: bondi,
     description:
@@ -104,7 +112,7 @@ export const Projects = [
   },
   {
     name: "Fylo",
-    order: "07",
+    order: "08",
     link: "https://sam-tailwind.netlify.app/",
     image: fylo,
     description:
@@ -112,7 +120,7 @@ export const Projects = [
   },
   {
     name: "Grocify",
-    order: "08",
+    order: "09",
     link: "https://sam-tailwind-page.netlify.app/",
     image: grocify,
     description:
