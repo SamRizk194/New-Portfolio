@@ -103,7 +103,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed inset-0 z-10 ${
+      className={`fixed inset-0 z-20 ${
         isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
       }`}
     >
