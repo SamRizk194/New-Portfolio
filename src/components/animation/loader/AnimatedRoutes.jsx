@@ -9,7 +9,7 @@ import Skills from "../../Skills";
 import MyProjects from "../../MyProjects";
 import ContactMe from "../../ContactMe";
 import About from "../../pages/About";
-import Projects from "../../pages/Projects";
+import ProjectsSection from "../../pages/projects/ProjectsSection";
 import Contacts from "../../pages/Contacts";
 
 export default function AnimatedRoutes() {
@@ -59,7 +59,7 @@ export default function AnimatedRoutes() {
         />
 
         <Route path="/about" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
+        <Route path="/projects" element={<ProjectsSection />} />
         <Route path="/contact" element={<Contacts />} />
       </Routes>
     </>

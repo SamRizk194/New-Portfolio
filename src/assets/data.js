@@ -57,30 +57,41 @@ export const Projects = [
     order: "01",
     link: "https://sam-e-commerce.netlify.app/",
     image: ecommerce,
+    description:
+      "An e-commerce site built with React, Vite, and Redux Toolkit, featuring a smooth shopping cart, responsive design, and fast performance.",
+    badge: "You Are Here",
   },
   {
     name: "Agency-Ai",
     order: "02",
     link: "https://sam-agenciai.netlify.app/",
     image: agency,
+    description:
+      "Modern agency website built with React & Tailwind, fully responsive with smooth animations and Web3Forms.",
+    highlight: true,
   },
   {
     name: "Edusity",
     order: "03",
     link: "https://sam-edusity.netlify.app/",
     image: edusity,
+    description:
+      "A React and Vite website with smooth scrolling, Web3 form submissions, custom CSS styling, and React Hooks for state management.",
   },
   {
     name: "Foodera",
     order: "04",
     link: "https://samfoodera.netlify.app/",
     image: foodera,
+    description:
+      "A React-based website for exploring food and recipes, built with a responsive design using Bootstrap and React Bootstrap components.",
   },
   {
     name: "Portfolio",
     order: "05",
     link: "https://sameh-rizk.netlify.app/",
     image: portfolio,
+    description: "",
   },
 
   {
@@ -88,17 +99,23 @@ export const Projects = [
     order: "06",
     link: "https://bondi-project.netlify.app/",
     image: bondi,
+    description:
+      "A responsive website built with HTML, CSS, and Bootstrap, featuring Font Awesome icons for improved design and user experience.",
   },
   {
     name: "Fylo",
     order: "07",
     link: "https://sam-tailwind.netlify.app/",
     image: fylo,
+    description:
+      "A responsive React + Vite project styled with Tailwind CSS, developed as a training exercise in modern frontend design and responsive design.",
   },
   {
     name: "Grocify",
     order: "08",
     link: "https://sam-tailwind-page.netlify.app/",
     image: grocify,
+    description:
+      "A responsive HTML page styled with Tailwind CSS, adapting to different screen sizes, with a navigation bar that turns into a hamburger menu on smaller screens.",
   },
 ];
