@@ -51,79 +51,126 @@ export const MY_STACK = {
     { name: "React Lottie", icon: lottieIcon, color: "#F9A03C" },
   ],
 };
-
 export const Projects = [
   {
+    id: "portfolio",
     name: "This Portfolio – You're Looking At It",
     order: "01",
     link: "#",
     image: portfolio,
     description:
-      " A creative developer portfolio built with React, Tailwind CSS, GSAP, and a bit of obsession.",
+      "A creative developer portfolio built with React, Tailwind CSS, GSAP, and a bit of obsession.",
+    overview:
+      "A modern developer portfolio showcasing projects with smooth animations, clean UI, and responsive layouts.",
+    achievements: [
+      "Built with React + Tailwind + GSAP",
+      "Fully responsive across all devices",
+      "Reusable and scalable component structure",
+    ],
     highlight: true,
   },
   {
+    id: "ecommerce",
     name: "E-Commerce",
     order: "02",
     link: "https://sam-e-commerce.netlify.app/",
     image: ecommerce,
     description:
-      "An e-commerce site built with React, Vite, and Redux Toolkit, featuring a smooth shopping cart, responsive design, and fast performance.",
+      "An e-commerce site built with React, Vite, and Redux Toolkit.",
+    overview:
+      "A full-featured shopping experience with cart management and optimized performance.",
+    achievements: [
+      "Redux Toolkit for state management",
+      "Dynamic cart system",
+      "Responsive modern UI",
+    ],
   },
   {
+    id: "agency",
     name: "Agency-Ai",
     order: "03",
     link: "https://sam-agenciai.netlify.app/",
     image: agency,
-    description:
-      "Modern agency website built with React & Tailwind, fully responsive with smooth animations and Web3Forms.",
+    description: "Modern agency website built with React & Tailwind.",
+    overview:
+      "A sleek agency landing page with animations and responsive layout.",
+    achievements: [
+      "Smooth scroll animations",
+      "Responsive design",
+      "Web3Forms integration",
+    ],
   },
   {
+    id: "edusity",
     name: "Edusity",
     order: "04",
     link: "https://sam-edusity.netlify.app/",
     image: edusity,
-    description:
-      "A React and Vite website with smooth scrolling, Web3 form submissions, custom CSS styling, and React Hooks for state management.",
+    description: "React + Vite website with smooth scrolling and forms.",
+    overview: "Educational platform UI with modern frontend practices.",
+    achievements: ["React Hooks usage", "Form handling", "Custom CSS styling"],
   },
   {
+    id: "foodera",
     name: "Foodera",
     order: "05",
     link: "https://samfoodera.netlify.app/",
     image: foodera,
-    description:
-      "A React-based website for exploring food and recipes, built with a responsive design using Bootstrap and React Bootstrap components.",
+    description: "Food and recipes website built with React and Bootstrap.",
+    overview: "A clean UI for browsing meals and recipes.",
+    achievements: [
+      "Responsive Bootstrap layout",
+      "Component-based structure",
+      "Clean UI/UX",
+    ],
   },
   {
+    id: "portfolio-v1",
     name: "Portfolio V.1",
     order: "06",
     link: "https://sameh-rizk.netlify.app/",
     image: portfoliov1,
-    description: "",
+    description: "First version of my portfolio.",
+    overview:
+      "Initial version of my portfolio showcasing early frontend skills.",
+    achievements: ["Basic responsive layout", "Simple UI structure"],
   },
-
   {
+    id: "bondi",
     name: "Bondi",
     order: "07",
     link: "https://bondi-project.netlify.app/",
     image: bondi,
-    description:
-      "A responsive website built with HTML, CSS, and Bootstrap, featuring Font Awesome icons for improved design and user experience.",
+    description: "Responsive website built with HTML, CSS, and Bootstrap.",
+    overview: "Static website focusing on layout and responsiveness.",
+    achievements: [
+      "Bootstrap grid system",
+      "Font Awesome integration",
+      "Responsive design",
+    ],
   },
   {
+    id: "fylo",
     name: "Fylo",
     order: "08",
     link: "https://sam-tailwind.netlify.app/",
     image: fylo,
-    description:
-      "A responsive React + Vite project styled with Tailwind CSS, developed as a training exercise in modern frontend design and responsive design.",
+    description: "React + Tailwind responsive project.",
+    overview: "Frontend training project using Tailwind CSS.",
+    achievements: ["Tailwind styling", "Responsive layout", "Modern UI design"],
   },
   {
+    id: "grocify",
     name: "Grocify",
     order: "09",
     link: "https://sam-tailwind-page.netlify.app/",
     image: grocify,
-    description:
-      "A responsive HTML page styled with Tailwind CSS, adapting to different screen sizes, with a navigation bar that turns into a hamburger menu on smaller screens.",
+    description: "Responsive Tailwind HTML page.",
+    overview: "Landing page with responsive navbar and layout.",
+    achievements: [
+      "Hamburger menu",
+      "Tailwind layout system",
+      "Mobile-first design",
+    ],
   },
 ];

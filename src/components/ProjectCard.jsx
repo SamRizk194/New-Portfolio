@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const ProjectCard = ({ project }) => {
   return (
     <div className="font-belanosima w-full max-w-5xl mx-auto bg-neutral-900 text-white min-h-[360px] p-5 sm:p-6 md:p-8 rounded-[25px] lg:rounded-[40px] border border-white/20 shadow-xl relative overflow-hidden">
@@ -28,35 +30,37 @@ const ProjectCard = ({ project }) => {
       </div>
 
       <div className="relative w-full h-[220px] sm:h-[300px] md:h-[380px] overflow-hidden rounded-[15px] lg:rounded-[35px] group">
-        <img
-          src={project.image}
-          alt={project.name}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-black/30 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <button
-            aria-label={`View details and case study for ${project.name}`}
-            className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white text-black flex items-center justify-center shadow-xl hover:scale-110 transition-transform"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2.2}
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="lucide lucide-eye"
-              aria-hidden="true"
+        <Link to={`/project/${project.id}`}>
+          <img
+            src={project.image}
+            alt={project.name}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-black/30 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <button
+              aria-label={`View details and case study for ${project.name}`}
+              className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white text-black flex items-center justify-center shadow-xl hover:scale-110 transition-transform"
             >
-              <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
-              <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-          </button>
-        </div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2.2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-eye"
+                aria-hidden="true"
+              >
+                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </Link>
       </div>
     </div>
   );

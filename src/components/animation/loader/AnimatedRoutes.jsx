@@ -11,6 +11,7 @@ import ContactMe from "../../ContactMe";
 import About from "../../pages/About";
 import ProjectsSection from "../../pages/projects/ProjectsSection";
 import Contacts from "../../pages/Contacts";
+import ProjectDetails from "../../pages/projects/ProjectDetails";
 
 export default function AnimatedRoutes() {
   const location = useLocation();
@@ -61,6 +62,7 @@ export default function AnimatedRoutes() {
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<ProjectsSection />} />
         <Route path="/contact" element={<Contacts />} />
+        <Route path="/project/:id" element={<ProjectDetails />} />
       </Routes>
     </>
   );

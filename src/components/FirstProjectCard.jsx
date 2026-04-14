@@ -88,7 +88,7 @@ function FirstProjectCard({ project }) {
 
         {/* IMAGE */}
         <div
-          className="relative w-full h-[220px] sm:h-[300px] md:h-[380px] overflow-hidden rounded-[15px] lg:rounded-[35px] bg-zinc-900 group cursor-pointer"
+          className="relative w-full h-[220px] sm:h-[300px] md:h-[380px] overflow-hidden rounded-[15px] lg:rounded-[35px] bg-zinc-900 group"
           onClick={() => setOpen(true)}
         >
           <motion.img

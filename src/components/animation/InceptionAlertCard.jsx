@@ -164,7 +164,7 @@ const InceptionAlertCard = ({ onClose }) => {
                 <div className="bg-black/80 rounded-2xl p-4 border border-white/5 font-mono text-[10px] space-y-1.5">
                   <p className="text-[#4ade80]">&gt; scanning_reality...</p>
                   <p className="text-blue-400">
-                    &gt; match_found: emad-portfolio.vercel.app
+                    &gt; match_found: sameh-folio.netlify.app
                   </p>
                   <p className="text-rose-500">
                     &gt; error: USER_TRYING_TO_ENTER_THE_SAME_DIMENSION
