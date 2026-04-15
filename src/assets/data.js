@@ -21,12 +21,41 @@ import lottieIcon from "./my-stack/lottie.webp";
 //projects
 import portfolio from "../assets/my-stack/projects/portfolio.png";
 import ecommerce from "../assets/my-stack/projects/e-commerce.png";
+import ecommerce1 from "../assets/my-stack/projects/E1.png";
+import ecommerce2 from "../assets/my-stack/projects/E2.png";
+import ecommerce3 from "../assets/my-stack/projects/E3.png";
+import ecommerce4 from "../assets/my-stack/projects/E4.png";
+
 import agency from "../assets/my-stack/projects/agency-ai.png";
-import foodera from "../assets/my-stack/projects/foodera.png";
+import agency1 from "../assets/my-stack/projects/AG1.png";
+import agency2 from "../assets/my-stack/projects/AG2.png";
+import agency3 from "../assets/my-stack/projects/AG3.png";
+
 import edusity from "../assets/my-stack/projects/edusity.png";
+import edusity1 from "../assets/my-stack/projects/ED1.png";
+import edusity2 from "../assets/my-stack/projects/ED2.png";
+import edusity3 from "../assets/my-stack/projects/ED3.png";
+
+import foodera from "../assets/my-stack/projects/foodera.png";
+import foodera1 from "../assets/my-stack/projects/FO1.png";
+import foodera2 from "../assets/my-stack/projects/FO2.png";
+import foodera3 from "../assets/my-stack/projects/FO3.png";
+
 import portfoliov1 from "../assets/my-stack/projects/portfoliov1.png";
+import portfoliov11 from "../assets/my-stack/projects/PO1.png";
+import portfoliov12 from "../assets/my-stack/projects/PO2.png";
+import portfoliov13 from "../assets/my-stack/projects/PO3.png";
+
 import bondi from "../assets/my-stack/projects/bondi.png";
+import bondi1 from "../assets/my-stack/projects/BO1.png";
+import bondi2 from "../assets/my-stack/projects/BO2.png";
+import bondi3 from "../assets/my-stack/projects/BO3.png";
+
 import fylo from "../assets/my-stack/projects/fylo.png";
+import fylo1 from "../assets/my-stack/projects/FY1.png";
+import fylo2 from "../assets/my-stack/projects/FY2.png";
+import fylo3 from "../assets/my-stack/projects/FY3.png";
+
 import grocify from "../assets/my-stack/projects/grocify.png";
 
 export const MY_STACK = {
@@ -61,11 +90,11 @@ export const Projects = [
     description:
       "A creative developer portfolio built with React, Tailwind CSS, GSAP, and a bit of obsession.",
     overview:
-      "A modern developer portfolio showcasing projects with smooth animations, clean UI, and responsive layouts.",
+      "A modern developer portfolio showcasing projects with smooth animations, clean UI, and responsive layouts",
     achievements: [
-      "Built with React + Tailwind + GSAP",
-      "Fully responsive across all devices",
-      "Reusable and scalable component structure",
+      { text: "Built with React + Tailwind + GSAP", image: portfolio },
+      { text: "Fully responsive across all devices", image: portfolio },
+      { text: "Reusable and scalable component structure", image: portfolio },
     ],
     highlight: true,
   },
@@ -80,9 +109,10 @@ export const Projects = [
     overview:
       "A full-featured shopping experience with cart management and optimized performance.",
     achievements: [
-      "Redux Toolkit for state management",
-      "Dynamic cart system",
-      "Responsive modern UI",
+      { text: "Redux Toolkit for state management", image: ecommerce1 },
+      { text: "Responsive modern UI", image: ecommerce2 },
+      { text: "Dynamic cart system", image: ecommerce3 },
+      { text: "Responsive modern UI", image: ecommerce4 },
     ],
   },
   {
@@ -95,9 +125,9 @@ export const Projects = [
     overview:
       "A sleek agency landing page with animations and responsive layout.",
     achievements: [
-      "Smooth scroll animations",
-      "Responsive design",
-      "Web3Forms integration",
+      { text: "Smooth scroll animations", image: agency1 },
+      { text: "Responsive design", image: agency2 },
+      { text: "Web3Forms integration", image: agency3 },
     ],
   },
   {
@@ -108,7 +138,11 @@ export const Projects = [
     image: edusity,
     description: "React + Vite website with smooth scrolling and forms.",
     overview: "Educational platform UI with modern frontend practices.",
-    achievements: ["React Hooks usage", "Form handling", "Custom CSS styling"],
+    achievements: [
+      { text: "React Hooks usage", image: edusity1 },
+      { text: "Form handling", image: edusity2 },
+      { text: "Custom CSS styling", image: edusity3 },
+    ],
   },
   {
     id: "foodera",
@@ -119,9 +153,9 @@ export const Projects = [
     description: "Food and recipes website built with React and Bootstrap.",
     overview: "A clean UI for browsing meals and recipes.",
     achievements: [
-      "Responsive Bootstrap layout",
-      "Component-based structure",
-      "Clean UI/UX",
+      { text: "Responsive Bootstrap layout", image: foodera1 },
+      { text: "Component-based structure", image: foodera2 },
+      { text: "Clean UI/UX", image: foodera3 },
     ],
   },
   {
@@ -133,7 +167,11 @@ export const Projects = [
     description: "First version of my portfolio.",
     overview:
       "Initial version of my portfolio showcasing early frontend skills.",
-    achievements: ["Basic responsive layout", "Simple UI structure"],
+    achievements: [
+      { text: "Basic responsive layout", image: portfoliov11 },
+      { text: "Simple UI structure", image: portfoliov12 },
+      { text: "Simple UI structure", image: portfoliov13 },
+    ],
   },
   {
     id: "bondi",
@@ -144,9 +182,9 @@ export const Projects = [
     description: "Responsive website built with HTML, CSS, and Bootstrap.",
     overview: "Static website focusing on layout and responsiveness.",
     achievements: [
-      "Bootstrap grid system",
-      "Font Awesome integration",
-      "Responsive design",
+      { text: "Bootstrap grid system", image: bondi1 },
+      { text: "Font Awesome integration", image: bondi2 },
+      { text: "Responsive design", image: bondi3 },
     ],
   },
   {
@@ -157,7 +195,11 @@ export const Projects = [
     image: fylo,
     description: "React + Tailwind responsive project.",
     overview: "Frontend training project using Tailwind CSS.",
-    achievements: ["Tailwind styling", "Responsive layout", "Modern UI design"],
+    achievements: [
+      { text: "Tailwind styling", image: fylo1 },
+      { text: "Responsive layout", image: fylo2 },
+      { text: "Modern UI design", image: fylo3 },
+    ],
   },
   {
     id: "grocify",
@@ -167,10 +209,6 @@ export const Projects = [
     image: grocify,
     description: "Responsive Tailwind HTML page.",
     overview: "Landing page with responsive navbar and layout.",
-    achievements: [
-      "Hamburger menu",
-      "Tailwind layout system",
-      "Mobile-first design",
-    ],
+    achievements: [{ text: "Hamburger menu", image: grocify }],
   },
 ];
