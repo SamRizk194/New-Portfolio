@@ -1,5 +1,5 @@
 import { Projects } from "../../../assets/data";
-import ProjectCard from "./ProjectCard";
+import ProjectCardDetail from "./ProjectCardDetail";
 
 const ProjectsSection = () => {
   return (
@@ -23,7 +23,7 @@ const ProjectsSection = () => {
       "
       >
         {Projects.map((project) => (
-          <ProjectCard key={project.id} project={project} />
+          <ProjectCardDetail key={project.id} project={project} />
         ))}
       </div>
     </section>

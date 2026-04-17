@@ -15,7 +15,7 @@ export default function Loader({ onChangePage, onFinish }) {
         x: "0%",
         duration: 0.9,
         ease: "power3.inOut",
-      }
+      },
     )
 
       // وقف
@@ -24,7 +24,7 @@ export default function Loader({ onChangePage, onFinish }) {
         duration: 0.1,
       })
 
-      // تغيير الصفحه 
+      // تغيير الصفحه
       .add(() => {
         onChangePage?.();
       })
@@ -44,7 +44,6 @@ export default function Loader({ onChangePage, onFinish }) {
     <div
       ref={layer}
       className="fixed top-0 left-0 w-full h-full z-[99999999] will-change-transform bg-green-400"
- 
     />
   );
 }

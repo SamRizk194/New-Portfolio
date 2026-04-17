@@ -117,7 +117,7 @@ function FirstProjectCard({ project }) {
             "
           />
 
-          {/* CENTER ICON (FIXED CENTER) */}
+          {/* CENTER ICON */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
             <div className="flex flex-col items-center gap-1.5 opacity-60 group-hover:opacity-100 transition-opacity duration-500">
               <div className="p-2 rounded-full bg-[#22ff88]/10 border border-[#22ff88]/20">

@@ -64,7 +64,9 @@ textarea {
   stroke: rgb(132, 128, 128);
   stroke-width: 0.5;
   fill: transparent;
-  animation: drawArrow 6s ease-out infinite, fillArrow 6s ease-in infinite;
+  animation:
+    drawArrow 6s ease-out infinite,
+    fillArrow 6s ease-in infinite;
 }
 
 @keyframes drawArrow {

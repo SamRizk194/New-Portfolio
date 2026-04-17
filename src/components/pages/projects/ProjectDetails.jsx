@@ -1,9 +1,15 @@
+import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Projects } from "../../../assets/data";
 
 const ProjectDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  // ⬅️ يخلي الصفحة تبدأ من فوق عند الفتح
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const project = Projects.find((p) => p.id === id);
 

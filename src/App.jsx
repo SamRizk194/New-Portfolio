@@ -14,9 +14,6 @@ export default function App() {
 
   return (
     <div>
-      <CustomCursor />
-      <ScrollProgressIndicator />
-
       {/* 🎇 Background */}
       <Canvas
         style={{
@@ -49,6 +46,9 @@ export default function App() {
 
       {/* UI */}
       <div className="relative z-10 min-h-screen flex flex-col">
+        <CustomCursor />
+        <ScrollProgressIndicator />
+
         <Navbar />
 
         <main className="flex-1">

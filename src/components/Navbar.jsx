@@ -103,14 +103,14 @@ export default function Navbar() {
 
   return (
     <div
-      className={`fixed inset-0 z-20 ${
+      className={`fixed inset-0 z-[99999998] ${
         isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
       }`}
     >
       {/* BUTTON */}
       <button
         onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="fixed top-6 right-6 z-10 w-12 h-12 flex items-center justify-center group pointer-events-auto"
+        className="fixed top-6 right-6 z-[12] w-12 h-12 flex items-center justify-center group pointer-events-auto"
       >
         <span
           className={`absolute left-1/2 top-1/2 w-9 h-[3px] bg-white rounded-full 

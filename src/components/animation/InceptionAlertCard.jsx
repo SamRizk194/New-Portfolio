@@ -61,20 +61,23 @@ const InceptionAlertCard = ({ onClose }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
           />
 
           {/* Wrapper */}
           <div className="font-belanosima fixed inset-0 z-[9999] flex items-center justify-center px-4 isolate">
             <motion.div
-              initial={{ opacity: 0, y: 70, scale: 0.97 }}
+              initial={{ opacity: 0, y: 40, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{
                 opacity: 0,
-                y: 50,
-                scale: 0.92,
-                filter: "blur(6px)",
+                y: 40,
+                scale: 0.97,
               }}
-              transition={{ duration: 0.3 }}
+              transition={{
+                duration: 0.22,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="relative w-full max-w-lg min-w-[320px] 
               bg-[#0c0c0e] border border-white/10 rounded-[40px] 
               p-7 sm:p-10 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.9)]"

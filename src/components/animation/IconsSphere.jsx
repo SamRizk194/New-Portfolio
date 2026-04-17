@@ -227,7 +227,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
           <animated.group key={item.name} position={position}>
             <Html
               center
-              zIndexRange={[0, 5]}
               style={{
                 pointerEvents: dragging
                   ? "none"
