@@ -21,19 +21,33 @@ export default function AnimatedRoutes() {
 
   const prevPath = useRef(location.pathname);
 
-  // 🚀 منع scroll restoration نهائيًا
+  // نخزن مكان السكرول لكل صفحة
+  const scrollPositions = useRef({});
+
+  // منع scroll restoration من المتصفح
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
   }, []);
 
+  // عند تغيير الصفحة: نحفظ مكانك
   useEffect(() => {
     if (location.pathname !== prevPath.current) {
+      scrollPositions.current[prevPath.current] = window.scrollY;
+
       prevPath.current = location.pathname;
       setLoading(true);
     }
   }, [location.pathname]);
+
+  // عند عرض الصفحة: رجّع السكرول لمكانه
+  useEffect(() => {
+    const savedPosition =
+      scrollPositions.current[displayLocation.pathname] || 0;
+
+    window.scrollTo(0, savedPosition);
+  }, [displayLocation]);
 
   return (
     <>
@@ -42,9 +56,6 @@ export default function AnimatedRoutes() {
         <Loader
           onChangePage={() => {
             setDisplayLocation(location);
-
-            // 🔥 مهم جدًا: اجبر الصفحة فوق
-            window.scrollTo(0, 0);
           }}
           onFinish={() => {
             setLoading(false);
