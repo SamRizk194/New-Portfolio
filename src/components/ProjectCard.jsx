@@ -9,7 +9,9 @@ const ProjectCard = ({ project }) => {
           <h2 className="text-4xl sm:text-6xl md:text-8xl tracking-tighter font-black text-white/90">
             {project.order}
           </h2>
+
           <div className="h-12 w-[1px] bg-white/20"></div>
+
           <div className="space-y-1">
             <h3 className="text-xs lg:text-[13px] font-semibold text-gray-500 uppercase tracking-widest">
               Client
@@ -19,6 +21,7 @@ const ProjectCard = ({ project }) => {
             </p>
           </div>
         </div>
+
         <a
           href={project.link}
           target="_blank"
@@ -29,15 +32,20 @@ const ProjectCard = ({ project }) => {
         </a>
       </div>
 
+      {/* الصورة */}
       <div className="relative w-full h-[220px] sm:h-[300px] md:h-[380px] overflow-hidden rounded-[15px] lg:rounded-[35px] group">
-        <Link to={`/project/${project.id}`}>
-          <img
-            src={project.image}
-            alt={project.name}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-black/30 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-          <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <img
+          src={project.image}
+          alt={project.name}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+
+        {/* overlay */}
+        <div className="absolute inset-0 bg-black/30 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+        {/* زر العين فقط هو اللي يفتح المشروع */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <Link to={`/project/${project.id}`}>
             <button
               aria-label={`View details and case study for ${project.name}`}
               className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white text-black flex items-center justify-center shadow-xl hover:scale-110 transition-transform"
@@ -59,8 +67,8 @@ const ProjectCard = ({ project }) => {
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
             </button>
-          </div>
-        </Link>
+          </Link>
+        </div>
       </div>
     </div>
   );

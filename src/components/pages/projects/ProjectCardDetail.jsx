@@ -8,9 +8,7 @@ const ProjectCard = ({ project }) => {
   const isHighlighted = project.highlight;
   const [showAlert, setShowAlert] = useState(false);
 
-  // =========================
   // 🔥 HIGHLIGHTED CARD
-  // =========================
   if (isHighlighted) {
     return (
       <>
@@ -25,7 +23,7 @@ const ProjectCard = ({ project }) => {
         >
           {/* IMAGE */}
           <div className="relative w-full h-52 sm:h-64 overflow-hidden bg-black">
-            {/* 🔥 SCAN LINE (FRAMER MOTION) */}
+            {/* SCAN LINE */}
             <motion.div
               className="absolute left-0 right-0 h-[1px] z-30 pointer-events-none"
               initial={{ y: 0, opacity: 0 }}
@@ -111,39 +109,43 @@ const ProjectCard = ({ project }) => {
     );
   }
 
-  // =========================
-  // NORMAL CARD
-  // =========================
+  // 🟢 NORMAL CARD (FIXED)
   return (
     <div className="relative group w-full max-w-full sm:max-w-sm mb-10 bg-transparent rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-lg transition-all duration-300 sm:hover:scale-[1.02]">
       <div className="relative w-full h-44 sm:h-52 md:h-64 overflow-hidden">
+        {/* IMAGE LINK فقط */}
         <Link to={`/project/${project.id}`}>
           <img
             src={project.image}
             alt={project.name}
             className="object-cover w-full h-full transition-all duration-700 group-hover:scale-105"
           />
-
-          <div className="absolute inset-0 bg-black/40 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition flex items-center justify-center">
-            <button className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center shadow-lg hover:scale-110 transition-transform">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={2}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="w-4 h-4 md:w-5 md:h-5"
-              >
-                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
-            </button>
-          </div>
         </Link>
+
+        {/* OVERLAY (خارج Link عشان مفيش مشاكل) */}
+        <div className="absolute inset-0 bg-black/40 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition flex items-center justify-center">
+          <Link
+            to={`/project/${project.id}`}
+            className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-white text-black flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="w-4 h-4 md:w-5 md:h-5"
+            >
+              <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+              <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+          </Link>
+        </div>
       </div>
 
+      {/* CONTENT */}
       <div className="p-4 text-center space-y-2">
         <h3 className="text-lg font-bold text-[#4ade80]">{project.name}</h3>
 

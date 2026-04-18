@@ -21,6 +21,13 @@ export default function AnimatedRoutes() {
 
   const prevPath = useRef(location.pathname);
 
+  // 🚀 منع scroll restoration نهائيًا
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+  }, []);
+
   useEffect(() => {
     if (location.pathname !== prevPath.current) {
       prevPath.current = location.pathname;
@@ -34,11 +41,12 @@ export default function AnimatedRoutes() {
       {loading && (
         <Loader
           onChangePage={() => {
-            // تغيير الصفحة تحت الغطاء
             setDisplayLocation(location);
+
+            // 🔥 مهم جدًا: اجبر الصفحة فوق
+            window.scrollTo(0, 0);
           }}
           onFinish={() => {
-            // نقفل اللودر بعد ما animation يخلص بالكامل
             setLoading(false);
           }}
         />

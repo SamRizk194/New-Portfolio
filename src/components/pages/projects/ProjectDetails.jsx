@@ -6,7 +6,6 @@ const ProjectDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // ⬅️ يخلي الصفحة تبدأ من فوق عند الفتح
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -34,10 +33,10 @@ const ProjectDetails = () => {
       {/* CONTENT */}
       <div className="relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-12 md:mt-24 font-[belanosima] text-white">
-          {/* Back Button */}
+          {/* Back Button*/}
           <button
             onClick={() => navigate(-1)}
-            className="text-start text-amber-400 hover:underline mb-6"
+            className="group text-start text-amber-400 hover:underline mb-6"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -49,9 +48,13 @@ const ProjectDetails = () => {
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              className="overflow-visible"
             >
-              <path d="M13 9a1 1 0 0 1-1-1V5.061a1 1 0 0 0-1.811-.75l-6.835 6.836a1.207 1.207 0 0 0 0 1.707l6.835 6.835a1 1 0 0 0 1.811-.75V16a1 1 0 0 1 1-1h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z" />
-              <path d="M20 9v6" />
+              <g className="transition-transform duration-300 group-hover:-translate-x-1">
+                <path d="M13 9a1 1 0 0 1-1-1V5.061a1 1 0 0 0-1.811-.75l-6.835 6.836a1.207 1.207 0 0 0 0 1.707l6.835 6.835a1 1 0 0 0 1.811-.75V16a1 1 0 0 1 1-1h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z" />
+              </g>
+
+              <path d="M20 9v6" opacity="1" />
             </svg>
           </button>
 
@@ -68,7 +71,7 @@ const ProjectDetails = () => {
 
           {/* Live Section */}
           <div className="w-full mt-8 md:mt-12">
-            <section className="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row gap-8 p-6 md:p-8 border border-amber-700/40 rounded-2xl backdrop-blur m-6 transition-colors duration-500">
+            <section className="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row gap-8 p-6 md:p-8 border border-amber-700/40 rounded-2xl backdrop-blur m-6">
               <div className="flex-1 flex flex-col justify-center gap-4">
                 <div className="flex items-center gap-2 text-md text-amber-400">
                   <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
@@ -130,7 +133,7 @@ const ProjectDetails = () => {
               {project.achievements.map((item, i) => (
                 <section
                   key={i}
-                  className="group relative w-full bg-[#12161E] border border-white/5 rounded-3xl overflow-hidden flex flex-col md:flex-row isolate"
+                  className="group relative w-full bg-[#12161E] border border-white/5 rounded-3xl overflow-hidden flex flex-col md:flex-row"
                 >
                   <div className="flex-1 p-6 sm:p-8 md:p-12 flex flex-col justify-center order-2 md:order-1">
                     <div className="flex flex-col gap-5">
@@ -144,13 +147,12 @@ const ProjectDetails = () => {
                     </div>
                   </div>
 
-                  <div className="relative w-full h-64 sm:h-80 md:h-auto md:w-[45%] lg:w-[50%] order-1 md:order-2 shrink-0">
+                  <div className="relative w-full h-64 sm:h-80 md:h-auto md:w-[45%] lg:w-[50%] order-1 md:order-2">
                     <img
                       src={item.image}
                       alt={item.text}
                       className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-[#12161E] via-transparent to-transparent opacity-80"></div>
                   </div>
                 </section>
               ))}
