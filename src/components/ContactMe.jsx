@@ -8,6 +8,7 @@ import {
   ArrowUpRight,
   MapPin,
 } from "lucide-react";
+import toast, { Toaster } from "react-hot-toast";
 
 const ContactMe = () => {
   const [result, setResult] = useState("");
@@ -19,6 +20,8 @@ const ContactMe = () => {
     const formData = new FormData(event.target);
     formData.append("access_key", "64bc60b9-3ab1-4392-bcf3-c824527eabda");
 
+    const loadingToast = toast.loading("Sending message...");
+
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -29,18 +32,42 @@ const ContactMe = () => {
 
       if (data.success) {
         setResult("Message Sent Successfully!");
+
+        toast.success("Message sent successfully!", {
+          id: loadingToast,
+          style: {
+            background: "#0c0c0e",
+            color: "#4ade80",
+            border: "1px solid #4ade80",
+          },
+        });
+
         event.target.reset();
       } else {
         setResult(data.message || "Something went wrong.");
+
+        toast.error(data.message || "Something went wrong", {
+          id: loadingToast,
+        });
       }
     } catch (error) {
       console.error("Error:", error);
       setResult("Network error. Try again later.");
+
+      toast.error("Network error", {
+        id: loadingToast,
+      });
     }
   };
 
   return (
     <section className="mb-12 pb-6 px-3 lg:px-40 mt-70 font-belanosima">
+      {/* TOASTER ADDED HERE ONLY */}
+      <Toaster
+        position="top-right"
+        containerStyle={{ top: 100, zIndex: 9999 }}
+      />
+
       {/* HEADER + LINE UNDER IT */}
       <div className="mb-8 border-b border-white/5 pb-6 flex justify-between items-end">
         <h1 className="text-[8vw] md:text-[6vw] leading-none font-bold uppercase tracking-tighter text-white">
