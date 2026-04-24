@@ -26,7 +26,7 @@ const AboutMe = () => {
         stagger: 0.05,
       });
     },
-    { scope: container }
+    { scope: container },
   );
 
   useGSAP(
@@ -47,7 +47,7 @@ const AboutMe = () => {
         stagger: 0.02,
       });
     },
-    { scope: container }
+    { scope: container },
   );
 
   return (
@@ -68,7 +68,7 @@ const AboutMe = () => {
         <div className="font-belanosima grid md:grid-cols-12 mt-9 ">
           <div className="md:col-span-5 ">
             <p className="text-5xl slide-up-and-fade foreground pb-8 font-semibold">
-              <span className="w-fit h-fit p-0.5 bg-[#00e65c] text-black mr-1">
+              <span className="w-fit h-fit pl- pr-1 bg-[#00e65c] text-black mr-3">
                 Hi,
               </span>
               I&apos;m Sameh.

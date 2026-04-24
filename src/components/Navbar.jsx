@@ -144,7 +144,7 @@ export default function Navbar() {
       {/* MENU */}
       <div
         className={`fixed inset-0 flex flex-col items-center justify-center gap-8 text-white font-belanosima
-        bg-black/95
+        bg-black
         transition-transform duration-700 ease-[cubic-bezier(0.77,0,0.175,1)]
         ${isMenuOpen ? "translate-x-0" : "translate-x-full"}`}
       >

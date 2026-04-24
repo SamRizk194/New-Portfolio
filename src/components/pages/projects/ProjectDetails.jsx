@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Projects } from "../../../assets/data";
+import { ExternalLink } from "lucide-react";
 
 const ProjectDetails = () => {
   const { id } = useParams();
@@ -26,14 +27,14 @@ const ProjectDetails = () => {
         }}
       />
 
-      {/* GLOW EFFECTS */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-[#4ade80]/10 blur-[120px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[30vw] h-[30vw] bg-[#4ade80]/5 blur-[100px] rounded-full pointer-events-none" />
+      {/* GLOW EFFECTS (خففنا التأثير) */}
+      <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-[#4ade80]/10 blur-[120px] rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[30vw] h-[30vw] bg-[#4ade80]/3 blur-[80px] rounded-full pointer-events-none z-0" />
 
       {/* CONTENT */}
       <div className="relative z-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-12 md:mt-24 font-[belanosima] text-white">
-          {/* Back Button*/}
+          {/* Back Button */}
           <button
             onClick={() => navigate(-1)}
             className="group text-start text-amber-400 hover:underline mb-6"
@@ -53,8 +54,7 @@ const ProjectDetails = () => {
               <g className="transition-transform duration-300 group-hover:-translate-x-1">
                 <path d="M13 9a1 1 0 0 1-1-1V5.061a1 1 0 0 0-1.811-.75l-6.835 6.836a1.207 1.207 0 0 0 0 1.707l6.835 6.835a1 1 0 0 0 1.811-.75V16a1 1 0 0 1 1-1h2a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1z" />
               </g>
-
-              <path d="M20 9v6" opacity="1" />
+              <path d="M20 9v6" />
             </svg>
           </button>
 
@@ -71,7 +71,7 @@ const ProjectDetails = () => {
 
           {/* Live Section */}
           <div className="w-full mt-8 md:mt-12">
-            <section className="w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row gap-8 p-6 md:p-8 border border-amber-700/40 rounded-2xl backdrop-blur m-6">
+            <section className="relative isolate bg-[#0c0c0e] w-full max-w-6xl mx-auto flex flex-col-reverse md:flex-row gap-8 p-6 md:p-8 border border-amber-700/40 rounded-2xl backdrop-blur m-6">
               <div className="flex-1 flex flex-col justify-center gap-4">
                 <div className="flex items-center gap-2 text-md text-amber-400">
                   <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
@@ -96,17 +96,19 @@ const ProjectDetails = () => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex w-fit items-center justify-center px-6 py-3 rounded-full border border-amber-600 font-semibold text-amber-400 hover:bg-amber-600 hover:text-black transition-colors duration-300"
+                  className="mt-4 inline-flex items-center gap-2 w-fit px-6 py-3 rounded-full border border-amber-600 font-semibold text-amber-400 hover:bg-amber-600 hover:text-black transition-colors duration-300"
                 >
                   Visit Live Site
+                  <ExternalLink size={18} />
                 </a>
               </div>
 
-              <div className="relative w-full md:w-[360px] h-[220px] md:h-[260px] rounded-xl overflow-hidden group">
+              {/* IMAGE  */}
+              <div className="relative z-20 isolate w-full md:w-[360px] h-[220px] md:h-[260px] rounded-xl overflow-hidden group bg-black">
                 <img
                   src={project.image}
                   alt={project.name}
-                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                  className="relative z-10 object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
             </section>
@@ -147,7 +149,7 @@ const ProjectDetails = () => {
                     </div>
                   </div>
 
-                  <div className="relative w-full h-64 sm:h-80 md:h-auto md:w-[45%] lg:w-[50%] order-1 md:order-2">
+                  <div className="relative z-10 w-full h-64 sm:h-80 md:h-auto md:w-[45%] lg:w-[50%] order-1 md:order-2 bg-black">
                     <img
                       src={item.image}
                       alt={item.text}
