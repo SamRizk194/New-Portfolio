@@ -6,7 +6,6 @@ import { useInView } from "react-intersection-observer";
 import * as THREE from "three";
 import { MY_STACK } from "../../assets/data";
 
-// Hook لتحديد حجم الجهاز
 function useDeviceScale() {
   const [scaleFactor, setScaleFactor] = useState(1);
 
@@ -39,7 +38,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
 
   const scrollYRef = useRef(0);
 
-  // ✅ تثبيت أماكن البداية مرة واحدة فقط
   const initialPositions = useMemo(() => {
     const dirs = ["top", "bottom", "left", "right", "front", "back"];
 
@@ -111,7 +109,6 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
 
   const handlePointerUp = () => setDragging(false);
 
-  // scroll rotation
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
@@ -134,14 +131,13 @@ function GlobeWithHtmlIcons({ triggerAnimation }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [dragging]);
 
-  // idle rotation + visibility
   useFrame(() => {
     if (!groupRef.current) return;
 
     if (!dragging) {
       const q = new THREE.Quaternion().setFromAxisAngle(
         new THREE.Vector3(0, 1, 0),
-        0.0002,
+        0.0005,
       );
 
       groupRef.current.quaternion.multiply(q);

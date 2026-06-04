@@ -27,7 +27,7 @@ const ProjectDetails = () => {
         }}
       />
 
-      {/* GLOW EFFECTS (خففنا التأثير) */}
+      {/* GLOW EFFECTS */}
       <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-[#4ade80]/10 blur-[120px] rounded-full pointer-events-none z-0" />
       <div className="absolute bottom-[-10%] right-[-10%] w-[30vw] h-[30vw] bg-[#4ade80]/3 blur-[80px] rounded-full pointer-events-none z-0" />
 

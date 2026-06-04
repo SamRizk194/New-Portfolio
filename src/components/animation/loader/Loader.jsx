@@ -7,7 +7,6 @@ export default function Loader({ onChangePage, onFinish }) {
   useEffect(() => {
     const tl = gsap.timeline();
 
-    // دخول
     tl.fromTo(
       layer.current,
       { x: "-100%" },
@@ -18,18 +17,15 @@ export default function Loader({ onChangePage, onFinish }) {
       },
     )
 
-      // وقف
       .to(layer.current, {
         x: "0%",
         duration: 0.1,
       })
 
-      // تغيير الصفحه
       .add(() => {
         onChangePage?.();
       })
 
-      // خروج
       .to(layer.current, {
         x: "100%",
         duration: 0.9,

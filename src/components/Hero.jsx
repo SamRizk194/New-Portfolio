@@ -56,7 +56,7 @@ const Hero = () => {
             className="group relative w-max px-8 py-3 tracking-widest text-lg font-anton
             text-black bg-[#00e65c] overflow-hidden flex items-center justify-center"
           >
-            <span className="relative z-10">Resume</span>
+            <span className="relative z-10">About ME</span>
             <span
               className="absolute bottom-0 w-[300%] h-[600%] bg-white translate-y-full
               group-hover:translate-y-0

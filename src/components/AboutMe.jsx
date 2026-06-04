@@ -65,13 +65,10 @@ const AboutMe = () => {
           This is me.
         </p>
 
-        <div className="font-belanosima grid md:grid-cols-12 mt-9 ">
+        <div className=" grid md:grid-cols-12 mt-9 ">
           <div className="md:col-span-5 ">
             <p className="text-5xl slide-up-and-fade foreground pb-8 font-semibold">
-              <span className="w-fit h-fit pl- pr-1 bg-[#00e65c] text-black mr-3">
-                Hi,
-              </span>
-              I&apos;m Sameh.
+              Hi, I&apos;m Sameh.
             </p>
           </div>
           <div className="md:col-span-7 font-sans">

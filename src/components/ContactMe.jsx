@@ -62,13 +62,13 @@ const ContactMe = () => {
 
   return (
     <section className="mb-12 pb-6 px-3 lg:px-40 mt-70 font-belanosima">
-      {/* TOASTER ADDED HERE ONLY */}
+      {/*TOASTER */}
       <Toaster
         position="top-right"
         containerStyle={{ top: 100, zIndex: 9999 }}
       />
 
-      {/* HEADER + LINE UNDER IT */}
+      {/* HEADER */}
       <div className="mb-8 border-b border-white/5 pb-6 flex justify-between items-end">
         <h1 className="text-[8vw] md:text-[6vw] leading-none font-bold uppercase tracking-tighter text-white">
           Let's Talk <span className="text-[#00e65c] font-anton">.</span>

@@ -109,7 +109,7 @@ const ProjectCard = ({ project }) => {
     );
   }
 
-  // 🟢 NORMAL CARD (FIXED)
+  // 🟢 NORMAL CARD
   return (
     <div className="relative group w-full max-w-full sm:max-w-sm mb-10 bg-transparent rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-lg transition-all duration-300 sm:hover:scale-[1.02]">
       <div className="relative w-full h-44 sm:h-52 md:h-64 overflow-hidden">
@@ -122,7 +122,7 @@ const ProjectCard = ({ project }) => {
           />
         </Link>
 
-        {/* OVERLAY (خارج Link عشان مفيش مشاكل) */}
+        {/* OVERLAY */}
         <div className="absolute inset-0 bg-black/40 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition flex items-center justify-center">
           <Link
             to={`/project/${project.id}`}

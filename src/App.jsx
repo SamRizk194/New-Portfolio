@@ -14,7 +14,7 @@ export default function App() {
 
   return (
     <div>
-      {/* 🎇 Background */}
+      {/* Background */}
       <Canvas
         style={{
           position: "fixed",

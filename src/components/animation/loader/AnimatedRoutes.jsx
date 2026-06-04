@@ -2,7 +2,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import Loader from "../loader/Loader";
 
-// الصفحات
 import Hero from "../../Hero";
 import AboutMe from "../../AboutMe";
 import Skills from "../../Skills";
@@ -21,17 +20,14 @@ export default function AnimatedRoutes() {
 
   const prevPath = useRef(location.pathname);
 
-  // نخزن مكان السكرول لكل صفحة
   const scrollPositions = useRef({});
 
-  // منع scroll restoration من المتصفح
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
   }, []);
 
-  // عند تغيير الصفحة: نحفظ مكانك
   useEffect(() => {
     if (location.pathname !== prevPath.current) {
       scrollPositions.current[prevPath.current] = window.scrollY;
@@ -41,7 +37,6 @@ export default function AnimatedRoutes() {
     }
   }, [location.pathname]);
 
-  // عند عرض الصفحة: رجّع السكرول لمكانه
   useEffect(() => {
     const savedPosition =
       scrollPositions.current[displayLocation.pathname] || 0;
@@ -51,7 +46,6 @@ export default function AnimatedRoutes() {
 
   return (
     <>
-      {/* Loader */}
       {loading && (
         <Loader
           onChangePage={() => {

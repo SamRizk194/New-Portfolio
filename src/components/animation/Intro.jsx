@@ -27,7 +27,6 @@ export default function Intro({ onFinish }) {
 
     tl.to({}, { duration: 0.4 });
 
-    // العدّاد
     tl.to(
       { val: 0 },
       {
@@ -36,20 +35,18 @@ export default function Intro({ onFinish }) {
         ease: "power1.inOut",
         onUpdate: function () {
           counterRef.current.textContent = String(
-            Math.ceil(this.targets()[0].val)
+            Math.ceil(this.targets()[0].val),
           ).padStart(2, "0");
         },
-      }
+      },
     );
 
-    // إخفاء العدّاد
     tl.to(counterRef.current, {
       opacity: 0,
       duration: 0.6,
       ease: "power2.out",
     });
 
-    // ظهور اللوجو
     tl.fromTo(
       letterRefs.current,
       { y: 60, opacity: 0, scale: 0.9, filter: "blur(10px)" },
@@ -61,10 +58,9 @@ export default function Intro({ onFinish }) {
         stagger: 0.06,
         duration: 0.8,
         ease: "power3.out",
-      }
+      },
     );
 
-    // حركة خفيفة (breathing)
     tl.to(
       logoRef.current,
       {
@@ -72,10 +68,9 @@ export default function Intro({ onFinish }) {
         duration: 0.6,
         ease: "power1.inOut",
       },
-      "-=0.4"
+      "-=0.4",
     );
 
-    // اختفاء اللوجو + فتح الستارة
     tl.to(logoRef.current, {
       opacity: 0,
       y: -80,
@@ -94,10 +89,9 @@ export default function Intro({ onFinish }) {
         ease: "power4.inOut",
         stagger: 0.08,
       },
-      "<"
+      "<",
     );
 
-    // إنهاء
     tl.to(containerRef.current, {
       opacity: 0,
       duration: 0.4,
@@ -111,7 +105,6 @@ export default function Intro({ onFinish }) {
       ref={containerRef}
       className="fixed inset-0 flex items-center justify-center z-50 overflow-hidden bg-transparent"
     >
-      {/* الستارة (خلفية) */}
       <div className="absolute inset-0 flex w-full h-full pointer-events-none z-0">
         {[...Array(5)].map((_, i) => (
           <div
@@ -123,7 +116,6 @@ export default function Intro({ onFinish }) {
         ))}
       </div>
 
-      {/* العدّاد */}
       <h1
         ref={counterRef}
         className="absolute z-10 font-belanosima text-black/5 text-[20vw] font-bold leading-none tabular-nums w-[3ch] text-center"
@@ -131,7 +123,6 @@ export default function Intro({ onFinish }) {
         00
       </h1>
 
-      {/* اللوجو */}
       <h1
         ref={logoRef}
         className="absolute z-10 font-belanosima text-5xl sm:text-6xl md:text-7xl lg:text-[150px] xl:text-[180px] font-bold leading-none tracking-widest"

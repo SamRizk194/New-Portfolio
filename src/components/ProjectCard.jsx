@@ -32,7 +32,6 @@ const ProjectCard = ({ project }) => {
         </a>
       </div>
 
-      {/* الصورة */}
       <div className="relative w-full h-[220px] sm:h-[300px] md:h-[380px] overflow-hidden rounded-[15px] lg:rounded-[35px] group">
         <img
           src={project.image}
@@ -43,7 +42,6 @@ const ProjectCard = ({ project }) => {
         {/* overlay */}
         <div className="absolute inset-0 bg-black/30 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-        {/* زر العين فقط هو اللي يفتح المشروع */}
         <div className="absolute inset-0 flex items-center justify-center opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <Link to={`/project/${project.id}`}>
             <button
