@@ -8,7 +8,7 @@ function FirstProjectCard({ project }) {
 
   return (
     <div className="mb-5 lg:mb-15 font-belanosima">
-      {/* ================= MODAL ================= */}
+      {/* MODAL*/}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -31,7 +31,7 @@ function FirstProjectCard({ project }) {
         )}
       </AnimatePresence>
 
-      {/* ================= CARD ================= */}
+      {/* CARD */}
       <div className="group relative w-full max-w-5xl mx-auto min-h-[360px] p-5 sm:p-6 md:p-8 rounded-[25px] lg:rounded-[40px] border border-[#22ff88]/40 bg-[#0c0c0e] shadow-[0_0_35px_rgba(34,255,136,0.08)] overflow-hidden">
         {/* GRID BACKGROUND */}
         <div

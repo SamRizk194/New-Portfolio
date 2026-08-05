@@ -5,7 +5,7 @@ import bootstrapIcon from "./my-stack/bootstrap.svg";
 import tailwindIcon from "./my-stack/tailwind.png";
 import jsIcon from "./my-stack/js.png";
 import tsIcon from "./my-stack/ts.png";
-import reactIcon from "./my-stack/react.png";
+import reactIcon from "./my-stack/react.svg";
 import nextIcon from "./my-stack/next.png";
 import reduxIcon from "./my-stack/redux.png";
 import routerIcon from "./my-stack/router.webp";

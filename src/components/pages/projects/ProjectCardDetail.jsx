@@ -8,7 +8,7 @@ const ProjectCard = ({ project }) => {
   const isHighlighted = project.highlight;
   const [showAlert, setShowAlert] = useState(false);
 
-  // 🔥 HIGHLIGHTED CARD
+  //  HIGHLIGHTED CARD
   if (isHighlighted) {
     return (
       <>
@@ -113,7 +113,7 @@ const ProjectCard = ({ project }) => {
   return (
     <div className="relative group w-full max-w-full sm:max-w-sm mb-10 bg-transparent rounded-[20px] sm:rounded-[24px] overflow-hidden shadow-lg transition-all duration-300 sm:hover:scale-[1.02]">
       <div className="relative w-full h-44 sm:h-52 md:h-64 overflow-hidden">
-        {/* IMAGE LINK فقط */}
+        {/* IMAGE LINK */}
         <Link to={`/project/${project.id}`}>
           <img
             src={project.image}
