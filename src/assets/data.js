@@ -17,6 +17,7 @@ import gsapIcon from "./my-stack/gsap.png";
 import fontAwesomeIcon from "./my-stack/font-awesome.png";
 import viteIcon from "./my-stack/vite.svg";
 import lottieIcon from "./my-stack/lottie.webp";
+import Mendix from "./my-stack/mendix.png";
 
 //projects
 import portfolio from "../assets/my-stack/projects/portfolio.png";
@@ -78,6 +79,7 @@ export const MY_STACK = {
     { name: "vite", icon: viteIcon, color: "#646CFF" },
     { name: "npm", icon: npmIcon, color: "#CB3837" },
     { name: "React Lottie", icon: lottieIcon, color: "#F9A03C" },
+    { name: "Mendix", icon: Mendix, color: "#0595DB" },
   ],
 };
 export const Projects = [
